@@ -1,10 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useState, useEffect } from "react";
+import { get as getFromLocalStorage } from "local-storage";
 import Link from "next/link";
 
-import { reducer } from "~/store";
-import { initialState } from "~/store/initialState";
-
 import { TProduct } from "~/components/ProductDetails/types";
+import { TState } from "~/store/initialState";
 
 import {
   StyledWrapper,
@@ -18,27 +17,37 @@ import {
   StyledListItemPrices,
   StyledListItemPriceDefault,
   StyledListItemPriceDiscounted,
-} from "./styled";
+} from "~/components/Products/styled";
 
-import productsList from "./productsList.json";
-import { addToCart } from "~/store/actions";
+const Cart: React.FC = () => {
+  const [cartProducts, setCartProducts] = useState<TProduct[] | null>(null);
 
-const Products: React.FC = () => {
-  const [, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    const {
+      cart: { products },
+    }: TState = getFromLocalStorage("state");
+    products && setCartProducts(products);
+  }, []);
 
   return (
     <StyledWrapper>
-      {productsList && !!productsList.length && (
+      {cartProducts && !!cartProducts.length ? (
         <StyledList>
-          {productsList.map(
-            (product: TProduct): React.ReactElement => (
-              <StyledListItem key={`${product.id}-${product.name}`}>
+          {cartProducts.map(
+            ({
+              id,
+              image,
+              name,
+              priceDiscounted,
+              priceDefault,
+            }: TProduct): React.ReactElement => (
+              <StyledListItem key={`${id}-${name}`}>
                 <StyledListItemImageHolder>
                   <Link href="#" passHref>
                     <StyledListItemLink>
                       <StyledListItemImage
-                        alt={product.name}
-                        src={`/images/${product.image.url}`}
+                        alt={name}
+                        src={`/images/${image.url}`}
                       />
                     </StyledListItemLink>
                   </Link>
@@ -46,36 +55,31 @@ const Products: React.FC = () => {
 
                 <StyledListItemName>
                   <Link href="#" passHref>
-                    <StyledListItemNameLink>
-                      {product.name}
-                    </StyledListItemNameLink>
+                    <StyledListItemNameLink>{name}</StyledListItemNameLink>
                   </Link>
                 </StyledListItemName>
 
                 <StyledListItemPrices>
-                  {product.priceDiscounted && (
+                  {priceDiscounted && (
                     <StyledListItemPriceDiscounted>
-                      {product.priceDiscounted}
+                      {priceDiscounted}
                     </StyledListItemPriceDiscounted>
                   )}
                   <StyledListItemPriceDefault>
-                    {product.priceDefault}
+                    {priceDefault}
                   </StyledListItemPriceDefault>
                 </StyledListItemPrices>
 
-                <button
-                  onClick={() => dispatch(addToCart(product))}
-                  type="button"
-                >
-                  Add to cart
-                </button>
+                <button type="button">Remove from cart</button>
               </StyledListItem>
             )
           )}
         </StyledList>
+      ) : (
+        <div>It is empty now</div>
       )}
     </StyledWrapper>
   );
 };
 
-export { Products };
+export { Cart };
