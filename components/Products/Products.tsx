@@ -21,11 +21,10 @@ import {
 } from "./styled";
 
 import productsList from "./productsList.json";
-import { addToCart } from "~/store/actions";
+import { useStore, addToCart } from "~/store";
 
 const Products: React.FC = () => {
-  const [, dispatch] = useReducer(reducer, initialState);
-
+  const { dispatch } = useStore();
   return (
     <StyledWrapper>
       {productsList && !!productsList.length && (

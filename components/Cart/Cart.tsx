@@ -20,7 +20,7 @@ import {
 } from "~/components/Products/styled";
 
 const Cart: React.FC = () => {
-  const [cartProducts, setCartProducts] = useState<TProduct[] | null>(null);
+  const [cartProducts, setCartProducts] = useState<TProduct[]>(null);
 
   useEffect(() => {
     const {
