@@ -3,7 +3,7 @@ import { get as getFromLocalStorage } from "local-storage";
 import Link from "next/link";
 
 import { TProduct } from "~/components/ProductDetails/types";
-import { TState } from "~/store/initialState";
+import { useStore, removeFromCart } from "~/store";
 
 import {
   StyledWrapper,
@@ -20,20 +20,17 @@ import {
 } from "~/components/Products/styled";
 
 const Cart: React.FC = () => {
-  const [cartProducts, setCartProducts] = useState<TProduct[]>(null);
+  const { state, dispatch } = useStore();
 
-  useEffect(() => {
-    const {
-      cart: { products },
-    }: TState = getFromLocalStorage("state");
-    products && setCartProducts(products);
-  }, []);
+  const {
+    cart: { products },
+  } = state;
 
   return (
     <StyledWrapper>
-      {cartProducts && !!cartProducts.length ? (
+      {products && !!products.length ? (
         <StyledList>
-          {cartProducts.map(
+          {products.map(
             ({
               id,
               image,
@@ -70,7 +67,12 @@ const Cart: React.FC = () => {
                   </StyledListItemPriceDefault>
                 </StyledListItemPrices>
 
-                <button type="button">Remove from cart</button>
+                <button
+                  type="button"
+                  onClick={() => dispatch(removeFromCart(id))}
+                >
+                  Remove from cart
+                </button>
               </StyledListItem>
             )
           )}

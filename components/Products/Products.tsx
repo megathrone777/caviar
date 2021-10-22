@@ -1,8 +1,5 @@
-import React, { useReducer } from "react";
+import React from "react";
 import Link from "next/link";
-
-import { reducer } from "~/store";
-import { initialState } from "~/store/initialState";
 
 import { TProduct } from "~/components/ProductDetails/types";
 
