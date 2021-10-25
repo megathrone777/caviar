@@ -27,6 +27,14 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       });
     },
 
+    [TActionTypes.ADD_TO_CART]: (): TState =>
+      setStateToLocalStorage({
+        ...state,
+        cart: {
+          ...state.cart,
+          products: [...state.cart.products, payload],
+        },
+      }),
     DEFAULT: (): TState => {
       return state;
     },
