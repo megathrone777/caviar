@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { get as getFromLocalStorage } from "local-storage";
+import React from "react";
 import Link from "next/link";
 
 import { TProduct } from "~/components/ProductDetails/types";

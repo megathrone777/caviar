@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 import { TProduct } from "~/components/ProductDetails/types";
+import productsList from "./productsList.json";
+import { useStore, addToCart } from "~/store";
 
 import {
   StyledWrapper,
@@ -16,9 +18,6 @@ import {
   StyledListItemPriceDefault,
   StyledListItemPriceDiscounted,
 } from "./styled";
-
-import productsList from "./productsList.json";
-import { useStore, addToCart } from "~/store";
 
 const Products: React.FC = () => {
   const { dispatch } = useStore();
