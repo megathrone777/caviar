@@ -15,7 +15,7 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
   const actions = {
     [TActionTypes.REMOVE_PRODUCT]: (): TState => {
       const products = [...state.cart.products].filter(
-        (product: TProduct) => product.id !== payload.id
+        (product: TProduct) => product.id !== payload
       );
 
       return setStateToLocalStorage({

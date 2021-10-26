@@ -26,6 +26,10 @@ const Cart: React.FC = () => {
     cart: { products },
   } = state;
 
+  const handleRemoveProduct = (id: number) => {
+    return dispatch(removeFromCart(id));
+  };
+
   return (
     <StyledWrapper>
       {products && !!products.length ? (
@@ -67,10 +71,7 @@ const Cart: React.FC = () => {
                   </StyledListItemPriceDefault>
                 </StyledListItemPrices>
 
-                <button
-                  type="button"
-                  onClick={() => dispatch(removeFromCart(id))}
-                >
+                <button type="button" onClick={() => handleRemoveProduct(id)}>
                   Remove from cart
                 </button>
               </StyledListItem>

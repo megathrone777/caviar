@@ -22,6 +22,9 @@ import { useStore, addToCart } from "~/store";
 
 const Products: React.FC = () => {
   const { dispatch } = useStore();
+
+  const handleAddProduct = (product: TProduct) => dispatch(addToCart(product));
+
   return (
     <StyledWrapper>
       {productsList && !!productsList.length && (
@@ -59,10 +62,7 @@ const Products: React.FC = () => {
                   </StyledListItemPriceDefault>
                 </StyledListItemPrices>
 
-                <button
-                  onClick={() => dispatch(addToCart(product))}
-                  type="button"
-                >
+                <button onClick={() => handleAddProduct(product)} type="button">
                   Add to cart
                 </button>
               </StyledListItem>
