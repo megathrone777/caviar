@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { get as getFromLocalStorage } from "local-storage";
+import React from "react";
 import Link from "next/link";
 
 import { TProduct } from "~/components/ProductDetails/types";
@@ -21,7 +20,6 @@ import {
 
 const Cart: React.FC = () => {
   const { state, dispatch } = useStore();
-
   const {
     cart: { products },
   } = state;
@@ -35,8 +33,8 @@ const Cart: React.FC = () => {
               id,
               image,
               name,
-              priceDiscounted,
               priceDefault,
+              priceDiscounted,
             }: TProduct): React.ReactElement => (
               <StyledListItem key={`${id}-${name}`}>
                 <StyledListItemImageHolder>

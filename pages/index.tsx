@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Layout, Products } from "~/components";
+import { Layout, Products, Slider } from "~/components";
 
 const IndexPage: React.FC = () => (
-  <Layout title="Main page">
+  <Layout title="Caviar | Home page">
+    <Slider />
     <Products />
   </Layout>
 );

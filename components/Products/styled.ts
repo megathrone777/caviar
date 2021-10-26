@@ -6,6 +6,7 @@ export const StyledWrapper = styled.section`
 
 export const StyledList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin-left: ${({ theme }) => theme.rem(-15)};
   margin-right: ${({ theme }) => theme.rem(-15)};
 `;
@@ -22,11 +23,13 @@ export const StyledListItemLink = styled.a`
 `;
 
 export const StyledListItemImageHolder = styled.div`
+  background-color: ${({ theme }) => theme.colors.black};
   height: ${({ theme }) => theme.rem(270)};
 `;
 
 export const StyledListItemImage = styled.img`
   height: 100%;
+  mix-blend-mode: difference;
   object-fit: cover;
   width: 100%;
 `;
