@@ -1,31 +1,22 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.div`
-  height: 100%;
+  display: inline-block;
 `;
 
 export const StyledList = styled.ul`
-  align-items: center;
   display: flex;
-  height: 100%;
 `;
 
 export const StyledItem = styled.li`
-  margin-right: ${({ theme }) => theme.rem(30)};
-
-  &:last-of-type {
-    margin-right: 0;
-  }
+  margin-left: ${({ theme }) => theme.rem(15)};
 `;
 
 export const StyledLink = styled.a`
   color: ${({ theme }) => theme.colors.black};
-  font: ${({ theme }) => `${theme.rem(13)} ${theme.fonts.fontBold}`};
-  letter-spacing: ${({ theme }) => theme.rem(2)};
+  font-family: ${({ theme }) => theme.fonts.font};
   text-decoration: none;
-  text-transform: uppercase;
   transition: color 0.2s ease-in;
-  white-space: nowrap;
 
   &:hover {
     color: ${({ theme }) => theme.colors.orange};

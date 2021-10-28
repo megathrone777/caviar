@@ -1,27 +1,28 @@
 import { styled } from "~/theme";
 
-export const StyledWrapper = styled.div`
-  display: flex;
-  flex: 0 1 33%;
-  justify-content: flex-end;
-`;
+export const StyledWrapper = styled.div``;
 
 export const StyledLink = styled.a`
   display: block;
   position: relative;
   width: ${({ theme }) => theme.rem(40)};
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const StyledIcon = styled.i`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.blue};
 `;
 
 export const StyledQuantity = styled.span`
+  color: ${({ theme }) => theme.colors.blue};
   display: block;
-  top: ${({ theme }) => theme.rem(6)};
-  left: 5px;
+  font: ${({ theme }) => `${theme.rem(13)} ${theme.fonts.fontBold}`};
+  left: ${({ theme }) => theme.rem(6)};
+  position: absolute;
   right: 0;
   text-align: center;
-  font: ${({ theme }) => `${theme.rem(13)} ${theme.fonts.fontBold}`};
-  position: absolute;
+  top: ${({ theme }) => theme.rem(6)};
 `;

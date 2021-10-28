@@ -1,7 +1,8 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.header`
-  height: ${({ theme }) => theme.rem(90)};
+  background-color: #f5f5f5;
+  height: ${({ theme }) => theme.rem(100)};
 `;
 
 export const StyledLayout = styled.div`
@@ -11,6 +12,9 @@ export const StyledLayout = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledLogo = styled.div`
-  flex: 0 1 33%;
+export const StyledOptions = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 0 1 25%;
+  justify-content: flex-end;
 `;

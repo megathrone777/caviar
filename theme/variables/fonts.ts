@@ -3,6 +3,8 @@ export interface TFonts {
   font: string;
   fontLight: string;
   fontBold: string;
+  fontMedium: string;
+  fontQanelasBlack: string;
 }
 
 const fonts: TFonts = {
@@ -10,6 +12,8 @@ const fonts: TFonts = {
   font: "Roboto",
   fontLight: "RobotoLight",
   fontBold: "RobotoBold",
+  fontMedium: "RobotoMedium",
+  fontQanelasBlack: "QanelasBlack",
 };
 
 export { fonts };

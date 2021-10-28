@@ -8,4 +8,5 @@ export interface TProduct {
   priceDefault: number;
   priceDiscounted: number;
   quantity: number;
+  weight: string;
 }

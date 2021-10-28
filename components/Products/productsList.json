@@ -1,68 +1,98 @@
 [
   {
-    "id": 1,
-    "name": "Икра сёмги 120г",
-    "priceDefault": 5490,
-    "priceDiscounted": null,
-    "description": "Икра сёмги имеет икринки среднего для лососевой икры размера. Икру сёмги ласково называют «СЁМУШКА», она выгодно отличается идеальным сочетанием вкуса и разбористостью икринок. Икринки целые, в меру упругие и одновременно нежные.",
-    "quantity": 1,
-    "image": {
-      "url": "product_img.jpg"
-    }
-  },
-  {
     "id": 2,
-    "name": "Икра щуки «Premier Selection» 100г",
+    "name": "Икра щуки «Premier Selection»",
     "priceDefault": 5990,
     "priceDiscounted": null,
     "description": "Икра щуки имеет икринки золотого цвета, по размеру сопоставимые с осетровой икрой, но более упругие.",
     "quantity": 1,
     "image": {
       "url": "product_img.jpg"
-    }
+    },
+    "weight": "100g"
+  },
+  {
+    "id": 1,
+    "name": "Икра сёмги",
+    "priceDefault": 5490,
+    "priceDiscounted": null,
+    "description": "Икра сёмги имеет икринки среднего для лососевой икры размера. Икру сёмги ласково называют «СЁМУШКА», она выгодно отличается идеальным сочетанием вкуса и разбористостью икринок. Икринки целые, в меру упругие и одновременно нежные.",
+    "quantity": 1,
+    "image": {
+      "url": "product_img.jpg"
+    },
+    "weight": "100g"
   },
   {
     "id": 3,
-    "name": "Икра сёмги 120г",
+    "name": "Икра сёмги",
     "priceDefault": 5490,
     "priceDiscounted": null,
     "description": "Икра сёмги имеет икринки среднего для лососевой икры размера. Икру сёмги ласково называют «СЁМУШКА», она выгодно отличается идеальным сочетанием вкуса и разбористостью икринок. Икринки целые, в меру упругие и одновременно нежные.",
     "quantity": 1,
     "image": {
       "url": "product_img.jpg"
-    }
+    },
+    "weight": "100g"
   },
   {
     "id": 4,
-    "name": "Икра щуки «Premier Selection» 100г",
+    "name": "Икра щуки «Premier Selection»",
     "priceDefault": 5990,
     "priceDiscounted": null,
     "description": "Икра щуки имеет икринки золотого цвета, по размеру сопоставимые с осетровой икрой, но более упругие.",
     "quantity": 1,
     "image": {
       "url": "product_img.jpg"
-    }
+    },
+    "weight": "100g"
   },
   {
     "id": 5,
-    "name": "Икра сёмги 120г",
+    "name": "Икра сёмги",
     "priceDefault": 5490,
     "priceDiscounted": null,
     "description": "Икра сёмги имеет икринки среднего для лососевой икры размера. Икру сёмги ласково называют «СЁМУШКА», она выгодно отличается идеальным сочетанием вкуса и разбористостью икринок. Икринки целые, в меру упругие и одновременно нежные.",
     "quantity": 1,
     "image": {
       "url": "product_img.jpg"
-    }
+    },
+    "weight": "100g"
   },
   {
     "id": 6,
-    "name": "Икра щуки «Premier Selection» 100г",
+    "name": "Икра щуки «Premier Selection»",
     "priceDefault": 5990,
     "priceDiscounted": null,
     "description": "Икра щуки имеет икринки золотого цвета, по размеру сопоставимые с осетровой икрой, но более упругие.",
     "quantity": 1,
     "image": {
       "url": "product_img.jpg"
-    }
+    },
+    "weight": "100g"
+  },
+  {
+    "id": 7,
+    "name": "Икра щуки «Premier Selection»",
+    "priceDefault": 5990,
+    "priceDiscounted": null,
+    "description": "Икра щуки имеет икринки золотого цвета, по размеру сопоставимые с осетровой икрой, но более упругие.",
+    "quantity": 1,
+    "image": {
+      "url": "product_img.jpg"
+    },
+    "weight": "100g"
+  },
+  {
+    "id": 8,
+    "name": "Икра щуки «Premier Selection»",
+    "priceDefault": 5990,
+    "priceDiscounted": null,
+    "description": "Икра щуки имеет икринки золотого цвета, по размеру сопоставимые с осетровой икрой, но более упругие.",
+    "quantity": 1,
+    "image": {
+      "url": "product_img.jpg"
+    },
+    "weight": "100g"
   }
 ]
