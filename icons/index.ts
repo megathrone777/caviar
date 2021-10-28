@@ -1,0 +1,1 @@
+export { SvgCartIcon } from "./SvgCartIcon";

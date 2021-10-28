@@ -1,5 +1,5 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.section`
-  height: ${({ theme }) => theme.rem(650)};
+  height: ${({ theme }) => theme.rem(450)};
 `;

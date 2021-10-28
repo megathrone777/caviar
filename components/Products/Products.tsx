@@ -22,20 +22,29 @@ import productsList from "./productsList.json";
 
 const Products: React.FC = () => {
   const { dispatch } = useStore();
+
   return (
     <StyledWrapper>
       <Container>
         {productsList && !!productsList.length && (
           <StyledList>
             {productsList.map(
-              (product: TProduct): React.ReactElement => (
-                <StyledListItem key={`${product.id}-${product.name}`}>
+              ({
+                description,
+                id,
+                image,
+                name,
+                priceDefault,
+                priceDiscounted,
+                quantity,
+              }: TProduct): React.ReactElement => (
+                <StyledListItem key={`${id}-${name}`}>
                   <StyledListItemImageHolder>
-                    <Link href="#" passHref>
+                    <Link href={`/product/${id}`} passHref>
                       <StyledListItemLink>
                         <StyledListItemImage
-                          alt={product.name}
-                          src={`/images/${product.image.url}`}
+                          alt={name}
+                          src={`/images/${image.url}`}
                         />
                       </StyledListItemLink>
                     </Link>
@@ -43,28 +52,38 @@ const Products: React.FC = () => {
 
                   <StyledListItemName>
                     <Link href="#" passHref>
-                      <StyledListItemNameLink>
-                        {product.name}
-                      </StyledListItemNameLink>
+                      <StyledListItemNameLink>{name}</StyledListItemNameLink>
                     </Link>
                   </StyledListItemName>
 
                   <StyledListItemPrices>
-                    {product.priceDiscounted && (
+                    {priceDiscounted && (
                       <StyledListItemPriceDiscounted>
-                        {product.priceDiscounted}
+                        {priceDiscounted}
                       </StyledListItemPriceDiscounted>
                     )}
                     <StyledListItemPriceDefault>
-                      {product.priceDefault}
+                      {priceDefault}{" "}Ft
                     </StyledListItemPriceDefault>
                   </StyledListItemPrices>
 
                   <button
-                    onClick={() => dispatch(addToCart(product))}
+                    onClick={() =>
+                      dispatch(
+                        addToCart({
+                          description,
+                          id,
+                          image,
+                          name,
+                          priceDefault,
+                          priceDiscounted,
+                          quantity,
+                        })
+                      )
+                    }
                     type="button"
                   >
-                    Add to cart
+                    Добавить в корзину
                   </button>
                 </StyledListItem>
               )

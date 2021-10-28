@@ -15,7 +15,7 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
   const actions = {
     [TActionTypes.REMOVE_PRODUCT]: (): TState => {
       const products = [...state.cart.products].filter(
-        (product: TProduct) => product.id !== payload.id
+        (product: TProduct) => product.id !== payload
       );
 
       return setStateToLocalStorage({
@@ -27,14 +27,27 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       });
     },
 
-    [TActionTypes.ADD_TO_CART]: (): TState =>
-      setStateToLocalStorage({
+    [TActionTypes.ADD_TO_CART]: (): TState => {
+      const products = [...state.cart.products];
+      const foundIndex = products.findIndex(
+        (product: TProduct) => product.id === payload.id
+      );
+
+      if (products[foundIndex]) {
+        products[foundIndex].quantity = products[foundIndex].quantity + 1;
+      } else {
+        products.push(payload);
+      }
+
+      return setStateToLocalStorage({
         ...state,
         cart: {
           ...state.cart,
-          products: [...state.cart.products, payload],
+          products,
         },
-      }),
+      });
+    },
+
     DEFAULT: (): TState => {
       return state;
     },

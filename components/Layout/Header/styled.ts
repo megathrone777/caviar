@@ -11,4 +11,6 @@ export const StyledLayout = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledLogo = styled.div``;
+export const StyledLogo = styled.div`
+  flex: 0 1 33%;
+`;

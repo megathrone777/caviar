@@ -23,22 +23,36 @@ export const StyledListItemLink = styled.a`
 `;
 
 export const StyledListItemImageHolder = styled.div`
-  background-color: ${({ theme }) => theme.colors.black};
+  border: ${({ theme }) => theme.rem(1)} solid rgba(212, 212, 212, 0.5);
   height: ${({ theme }) => theme.rem(270)};
+  margin-bottom: ${({ theme }) => theme.rem(8)};
 `;
 
 export const StyledListItemImage = styled.img`
   height: 100%;
-  mix-blend-mode: difference;
   object-fit: cover;
   width: 100%;
 `;
 
-export const StyledListItemName = styled.h3``;
+export const StyledListItemName = styled.h3`
+  margin-bottom: ${({ theme }) => theme.rem(8)};
+  text-align: center;
+`;
 
-export const StyledListItemNameLink = styled.a``;
+export const StyledListItemNameLink = styled.a`
+  color: ${({ theme }) => theme.colors.black};
+  text-decoration: none;
+  transition: color 0.2s ease-in;
 
-export const StyledListItemPrices = styled.div``;
+  &:hover {
+    color: ${({ theme }) => theme.colors.orange};
+  }
+`;
+
+export const StyledListItemPrices = styled.div`
+  font: ${({ theme }) => `${theme.rem(15)} ${theme.fonts.fontBold}`};
+  text-align: center;
+`;
 
 export const StyledListItemPriceDefault = styled.span``;
 

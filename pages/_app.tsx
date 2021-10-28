@@ -16,7 +16,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
       @font-face {
         font-family: "Roboto";
         src: url("/fonts/Roboto-Regular.ttf");
-        font-weight: bold;
+        font-weight: normal;
         font-style: normal;
       }
 
@@ -24,6 +24,13 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
         font-family: "RobotoLight";
         src: url("/fonts/Roboto-Light.ttf");
         font-weight: 300;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "RobotoBold";
+        src: url("/fonts/Roboto-Bold.ttf");
+        font-weight: bold;
         font-style: normal;
       }
     `}</style>
