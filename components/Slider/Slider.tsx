@@ -10,6 +10,7 @@ import {
   StyledLayout,
   StyledTitle,
 } from "./styled";
+import { TSlide } from "~/components";
 
 const ArrowLeft: React.FC<CustomArrowProps> = ({ className, onClick }) => (
   <StyledArrowLeft className={className} onClick={onClick} type="button">
@@ -23,7 +24,11 @@ const ArrowRight: React.FC<CustomArrowProps> = ({ className, onClick }) => (
   </StyledArrowRight>
 );
 
-const Slider: React.FC = () => {
+interface TProps {
+  slides: TSlide[];
+}
+
+const Slider: React.FC<TProps> = ({ slides }) => {
   const settings: Settings = {
     autoplay: true,
     draggable: true,
@@ -41,43 +46,21 @@ const Slider: React.FC = () => {
   return (
     <StyledWrapper>
       <SlickSlider {...settings}>
-        <>
-          <StyledLayout>
-            <Container>
-              <StyledTitle>
-                Икра от
-                <br /> лицензированного
-                <br /> производителя
-              </StyledTitle>
-              <Button inverted type="button">
-                Перейти в магазин
-              </Button>
-            </Container>
-          </StyledLayout>
-          <img alt="Slide" src="/images/slider_img.jpg" />
-        </>
-        <>
-          <StyledLayout alignRight>
-            <Container>
-              <StyledTitle>
-                Икра c завода:
-                <br /> качество - выше, <br />
-                цена - ниже
-              </StyledTitle>
-              <Button type="button">Перейти в магазин</Button>
-            </Container>
-          </StyledLayout>
-          <img alt="Slide" src="/images/slider_img2.jpg" />
-        </>
-        <>
-          <StyledLayout>
-            <Container>
-              <StyledTitle>Рыбные деликатесы</StyledTitle>
-              <Button type="button">Перейти в магазин</Button>
-            </Container>
-          </StyledLayout>
-          <img alt="Slide" src="/images/slider_img3.jpg" />
-        </>
+        {slides.map(
+          ({ image, title }: TSlide): React.ReactElement => (
+            <>
+              <StyledLayout>
+                <Container>
+                  <StyledTitle dangerouslySetInnerHTML={{ __html: title }} />
+                  <Button inverted type="button">
+                    Перейти в магазин
+                  </Button>
+                </Container>
+              </StyledLayout>
+              <img alt="Slide" src={image.url} />
+            </>
+          )
+        )}
       </SlickSlider>
     </StyledWrapper>
   );

@@ -16,11 +16,12 @@ import HomePageQuery from "~/queries/homepage.gql";
 
 interface TProps {
   products: TProduct[];
+  slides: TSlide[];
 }
 
-const IndexPage: NextPage<TProps> = ({ products }) => (
+const IndexPage: NextPage<TProps> = ({ products, slides }) => (
   <Layout title="Caviar | Home page">
-    <Slider />
+    <Slider slides={slides} />
     <Products
       items={products}
       text={
@@ -62,7 +63,7 @@ const IndexPage: NextPage<TProps> = ({ products }) => (
 
 IndexPage.getInitialProps = async () => {
   const {
-    data: { products },
+    data: { products, slides },
   } = await client.query({
     query: gql`
       ${HomePageQuery}
@@ -71,6 +72,7 @@ IndexPage.getInitialProps = async () => {
 
   return {
     products,
+    slides,
   };
 };
 

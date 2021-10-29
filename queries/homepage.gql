@@ -13,7 +13,10 @@ query HomePageQuery {
     weight
   }
 
-  # slides(locale: "all") {
-
-  # }
+  slides(locale: "all") {
+    image {
+      url
+    }
+    title
+  }
 }
