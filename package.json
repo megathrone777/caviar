@@ -9,10 +9,17 @@
     "export": "next export"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.16",
+    "@types/react-slick": "^0.23.7",
+    "@types/reapop": "^3.0.0",
+    "graphql": "^16.0.0",
+    "graphql-tag": "^2.12.5",
     "local-storage": "^2.0.0",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-slick": "^0.28.1",
+    "reapop": "^4.0.2",
     "styled-components": "5.3.1"
   },
   "devDependencies": {

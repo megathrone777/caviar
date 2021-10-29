@@ -12,6 +12,14 @@ const base = css`
   body {
     font-family: ${({ theme }) => theme.fonts.font};
   }
+
+  a {
+    color: ${({ theme }) => theme.colors.orange};
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 `;
 
 export { base };

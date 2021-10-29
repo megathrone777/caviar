@@ -1,28 +1,25 @@
 import React from "react";
-import Link from "next/link";
 
+import { Logo } from "./Logo";
 import { Menu } from "./Menu";
 import { Cart } from "./Cart";
+import { Panel } from "./Panel";
 import { Container } from "~/theme/components";
-import { StyledWrapper, StyledLayout, StyledLogo } from "./styled";
+import { StyledWrapper, StyledLayout, StyledOptions } from "./styled";
 
 const Header: React.FC = () => (
-  <StyledWrapper>
-    <Container>
-      <StyledLayout>
-        <StyledLogo>
-          <Link href="/" passHref>
-            <a>
-              <img alt="Logo" src="/images/logo_img.png" />
-            </a>
-          </Link>
-        </StyledLogo>
-
-        <Menu />
-        <Cart />
-      </StyledLayout>
-    </Container>
-  </StyledWrapper>
+  <>
+    <Panel />
+    <StyledWrapper>
+      <Container>
+        <StyledLayout>
+          <Logo />
+          <Menu />
+          <Cart />
+        </StyledLayout>
+      </Container>
+    </StyledWrapper>
+  </>
 );
 
 export { Header };

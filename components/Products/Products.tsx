@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import { useNotifications } from "reapop";
 
 import { useStore, addToCart } from "~/store";
-import { TProduct } from "~/components/ProductDetails/types";
-import { Container } from "~/theme/components";
+import { TProduct } from "~/components";
+import { Button, Container } from "~/theme/components";
 import {
   StyledWrapper,
   StyledList,
@@ -13,30 +14,65 @@ import {
   StyledListItemImage,
   StyledListItemName,
   StyledListItemNameLink,
+  StyledListItemWeight,
   StyledListItemPrices,
   StyledListItemPriceDefault,
   StyledListItemPriceDiscounted,
+  StyledButtons,
+  StyledTitle,
+  StyledTitleImage,
+  StyledText,
 } from "./styled";
 
-import productsList from "./productsList.json";
+interface TProps {
+  items: TProduct[];
+  title: string;
+  text?: React.ReactElement;
+}
 
-const Products: React.FC = () => {
+const Products: React.FC<TProps> = ({ items, title, text }) => {
   const { dispatch } = useStore();
+  const { notify } = useNotifications();
+
+  const handleProductAdd = (product: TProduct): void => {
+    dispatch(addToCart(product));
+    notify({
+      dismissAfter: 3000,
+      dismissible: true,
+      image: "/images/logo_img.png",
+      position: "top-center",
+      showDismissButton: true,
+      status: "success",
+      title: `"${product.name}" добавлен в корзину`,
+    });
+  };
+
   return (
     <StyledWrapper>
       <Container>
-        {productsList && !!productsList.length && (
+        <StyledTitle>
+          <StyledTitleImage alt="Logo" src="/images/logo_img.png" />
+          {title}
+        </StyledTitle>
+        {text && <StyledText>{text}</StyledText>}
+        {items && !!items.length && (
           <StyledList>
-            {productsList.map(
-              (product: TProduct): React.ReactElement => (
-                <StyledListItem key={`${product.id}-${product.name}`}>
+            {items.map(
+              ({
+                description,
+                id,
+                imageSmall,
+                name,
+                priceDefault,
+                priceDiscounted,
+                quantity,
+                weight,
+              }: TProduct): React.ReactElement => (
+                <StyledListItem key={`${id}-${name}`}>
                   <StyledListItemImageHolder>
-                    <Link href="#" passHref>
+                    <Link href={`/product/${id}`} passHref>
                       <StyledListItemLink>
-                        <StyledListItemImage
-                          alt={product.name}
-                          src={`/images/${product.image.url}`}
-                        />
+                        <StyledListItemImage alt={name} src={imageSmall.url}   />
                       </StyledListItemLink>
                     </Link>
                   </StyledListItemImageHolder>
@@ -44,28 +80,43 @@ const Products: React.FC = () => {
                   <StyledListItemName>
                     <Link href="#" passHref>
                       <StyledListItemNameLink>
-                        {product.name}
+                        {name}{" "}
+                        <StyledListItemWeight>{weight}</StyledListItemWeight>
                       </StyledListItemNameLink>
                     </Link>
                   </StyledListItemName>
 
                   <StyledListItemPrices>
-                    {product.priceDiscounted && (
+                    {priceDiscounted && (
                       <StyledListItemPriceDiscounted>
-                        {product.priceDiscounted}
+                        {priceDiscounted}
                       </StyledListItemPriceDiscounted>
                     )}
                     <StyledListItemPriceDefault>
-                      {product.priceDefault}
+                      {priceDefault} €
                     </StyledListItemPriceDefault>
                   </StyledListItemPrices>
 
-                  <button
-                    onClick={() => dispatch(addToCart(product))}
-                    type="button"
-                  >
-                    Add to cart
-                  </button>
+                  <StyledButtons>
+                    <Button
+                      onClick={() =>
+                        handleProductAdd({
+                          description,
+                          id,
+                          imageSmall,
+                          name,
+                          priceDefault,
+                          priceDiscounted,
+                          quantity,
+                          totalPrice: priceDefault,
+                          weight,
+                        })
+                      }
+                      type="button"
+                    >
+                      Добавить в корзину
+                    </Button>
+                  </StyledButtons>
                 </StyledListItem>
               )
             )}

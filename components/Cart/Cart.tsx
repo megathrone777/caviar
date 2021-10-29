@@ -1,22 +1,21 @@
 import React from "react";
 import Link from "next/link";
 
-import { TProduct } from "~/components/ProductDetails/types";
+import { TProduct } from "~/components";
 import { useStore, removeFromCart } from "~/store";
-
+import { Button, Container } from "~/theme/components";
 import {
   StyledWrapper,
-  StyledList,
-  StyledListItem,
-  StyledListItemImageHolder,
-  StyledListItemLink,
-  StyledListItemImage,
-  StyledListItemName,
-  StyledListItemNameLink,
-  StyledListItemPrices,
-  StyledListItemPriceDefault,
-  StyledListItemPriceDiscounted,
-} from "~/components/Products/styled";
+  StyledContent,
+  StyledRow,
+  StyledCell,
+  StyledTitle,
+  StyledImage,
+  StyledTitleImage,
+  StyledName,
+  StyledPrice,
+  StyledImageWrapper,
+} from "./styled";
 
 const Cart: React.FC = () => {
   const { state, dispatch } = useStore();
@@ -24,61 +23,78 @@ const Cart: React.FC = () => {
     cart: { products },
   } = state;
 
+  const handleProductRemove = (id: string): void => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <StyledWrapper>
-      {products && !!products.length ? (
-        <StyledList>
-          {products.map(
-            ({
-              id,
-              image,
-              name,
-              priceDefault,
-              priceDiscounted,
-              quantity,
-            }: TProduct): React.ReactElement => (
-              <StyledListItem key={`${id}-${name}`}>
-                <StyledListItemImageHolder>
-                  <Link href="#" passHref>
-                    <StyledListItemLink>
-                      <StyledListItemImage
-                        alt={name}
-                        src={`/images/${image.url}`}
-                      />
-                    </StyledListItemLink>
-                  </Link>
-                </StyledListItemImageHolder>
+      <Container>
+        <StyledTitle>
+          <StyledTitleImage alt="Logo" src="/images/logo_img.png" />
+          Ваш заказ
+        </StyledTitle>
 
-                <StyledListItemName>
-                  <Link href="#" passHref>
-                    <StyledListItemNameLink>{name}</StyledListItemNameLink>
-                  </Link>
-                </StyledListItemName>
+        {products && !!products.length ? (
+          <StyledContent>
+            {products.map(
+              ({
+                id,
+                imageSmall,
+                name,
+                priceDefault,
+                priceDiscounted,
+                quantity,
+                weight,
+              }: TProduct): React.ReactElement => (
+                <StyledRow key={`${id}-${name}`}>
+                  <StyledCell>
+                    <StyledImageWrapper>
+                      <Link href="#" passHref>
+                        <a>
+                          <StyledImage alt={name} src={imageSmall.url} />
+                        </a>
+                      </Link>
+                    </StyledImageWrapper>
+                  </StyledCell>
 
-                <StyledListItemPrices>
-                  {priceDiscounted && (
-                    <StyledListItemPriceDiscounted>
-                      {priceDiscounted}
-                    </StyledListItemPriceDiscounted>
-                  )}
-                  <StyledListItemPriceDefault>
-                    {priceDefault}
-                  </StyledListItemPriceDefault>
-                </StyledListItemPrices>
-                <h1>Quantity: {quantity}</h1>
-                <button
-                  type="button"
-                  onClick={() => dispatch(removeFromCart(id))}
-                >
-                  Remove from cart
-                </button>
-              </StyledListItem>
-            )
-          )}
-        </StyledList>
-      ) : (
-        <div>It is empty now</div>
-      )}
+                  <StyledCell>
+                    <Link href="#" passHref>
+                      <StyledName>
+                        {name}
+                        {weight}
+                      </StyledName>
+                    </Link>
+                  </StyledCell>
+
+                  <StyledCell>
+                    {priceDiscounted && (
+                      <StyledPrice>{priceDiscounted}</StyledPrice>
+                    )}
+                    <StyledPrice>{priceDefault} €</StyledPrice>
+                  </StyledCell>
+
+                  <StyledCell>
+                    <span>{quantity}</span>
+                  </StyledCell>
+
+                  <StyledCell>
+                    <Button
+                      inverted
+                      type="button"
+                      onClick={() => handleProductRemove(id)}
+                    >
+                      Удалить
+                    </Button>
+                  </StyledCell>
+                </StyledRow>
+              )
+            )}
+          </StyledContent>
+        ) : (
+          <div>It is empty now</div>
+        )}
+      </Container>
     </StyledWrapper>
   );
 };

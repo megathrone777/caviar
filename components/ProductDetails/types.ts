@@ -1,11 +1,13 @@
 export interface TProduct {
-  id: number;
+  id: string;
   description: string;
-  image: {
+  imageSmall: {
     url: string;
   };
   name: string;
   priceDefault: number;
   priceDiscounted: number;
   quantity: number;
+  totalPrice: number;
+  weight: string;
 }

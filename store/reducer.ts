@@ -1,7 +1,7 @@
 import React from "react";
 import { set as setToLocalStorage } from "local-storage";
 
-import { TProduct } from "~/components/ProductDetails/types";
+import { TProduct } from "~/components";
 import { TAction, TActionTypes } from "./actions";
 import { TState } from "./initialState";
 
@@ -15,7 +15,7 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
   const actions = {
     [TActionTypes.REMOVE_PRODUCT]: (): TState => {
       const products = [...state.cart.products].filter(
-        (product: TProduct) => product.id !== payload.id
+        (product: TProduct) => product.id !== payload
       );
 
       return setStateToLocalStorage({
@@ -29,14 +29,14 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
 
     [TActionTypes.ADD_TO_CART]: (): TState => {
       const products = [...state.cart.products];
-      const productIndex = products.findIndex(
+      const foundIndex = products.findIndex(
         (product: TProduct) => product.id === payload.id
       );
 
-      const isProductInCart = productIndex > -1;
-
-      if (isProductInCart) {
-        products[productIndex].quantity = products[productIndex].quantity + 1;
+      if (products[foundIndex]) {
+        products[foundIndex].quantity = products[foundIndex].quantity + 1;
+        products[foundIndex].totalPrice =
+          products[foundIndex].totalPrice + parseInt(payload.priceDefault);
       } else {
         products.push(payload);
       }
