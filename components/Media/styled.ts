@@ -1,7 +1,7 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.section`
-  height: ${({ theme }) => theme.rem(400)};
+  height: ${({ theme }) => theme.rem(500)};
   position: relative;
 `;
 
@@ -22,7 +22,7 @@ export const StyledLayout = styled.div`
 
 export const StyledTitle = styled.h2`
   color: white;
-  font: ${({ theme }) => `${theme.rem(55)} ${theme.fonts.fontQanelasBlack}`};
+  font: ${({ theme }) => `${theme.rem(55)} ${theme.fonts.fontBlack}`};
   letter-spacing: ${({ theme }) => theme.rem(1)};
   max-width: ${({ theme }) => theme.rem(650)};
   margin-bottom: ${({ theme }) => theme.rem(20)};

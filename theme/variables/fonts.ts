@@ -4,16 +4,18 @@ export interface TFonts {
   fontLight: string;
   fontBold: string;
   fontMedium: string;
-  fontQanelasBlack: string;
+  fontBlack: string;
+  fontSemiBold: string;
 }
 
 const fonts: TFonts = {
   initialFontSize: 16,
-  font: "Roboto",
-  fontLight: "RobotoLight",
-  fontBold: "RobotoBold",
-  fontMedium: "RobotoMedium",
-  fontQanelasBlack: "QanelasBlack",
+  font: "Qanelas",
+  fontLight: "QanelasLight",
+  fontBold: "QanelasBold",
+  fontMedium: "QanelasMedium",
+  fontBlack: "QanelasBlack",
+  fontSemiBold: "QanelasSemiBold",
 };
 
 export { fonts };

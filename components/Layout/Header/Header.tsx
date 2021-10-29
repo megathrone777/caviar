@@ -15,10 +15,7 @@ const Header: React.FC = () => (
         <StyledLayout>
           <Logo />
           <Menu />
-
-          <StyledOptions>
-            <Cart />
-          </StyledOptions>
+          <Cart />
         </StyledLayout>
       </Container>
     </StyledWrapper>

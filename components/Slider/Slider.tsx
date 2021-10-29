@@ -1,11 +1,13 @@
 import React from "react";
 import SlickSlider, { CustomArrowProps, Settings } from "react-slick";
 
+import { Button, Container } from "~/theme/components";
 import { SvgAngleIcon } from "~/icons";
 import {
   StyledWrapper,
   StyledArrowLeft,
   StyledArrowRight,
+  StyledLayout,
   StyledTitle,
 } from "./styled";
 
@@ -39,11 +41,43 @@ const Slider: React.FC = () => {
   return (
     <StyledWrapper>
       <SlickSlider {...settings}>
-        <div>
-          <StyledTitle>Икра от лицензированного производителя</StyledTitle>
+        <>
+          <StyledLayout>
+            <Container>
+              <StyledTitle>
+                Икра от
+                <br /> лицензированного
+                <br /> производителя
+              </StyledTitle>
+              <Button inverted type="button">
+                Перейти в магазин
+              </Button>
+            </Container>
+          </StyledLayout>
           <img alt="Slide" src="/images/slider_img.jpeg" />
-        </div>
-        {/* <img alt="Slide 2" src="/images/slider_img2.jpg" /> */}
+        </>
+        <>
+          <StyledLayout alignRight>
+            <Container>
+              <StyledTitle>
+                Икра c завода:
+                <br /> качество - выше, <br />
+                цена - ниже
+              </StyledTitle>
+              <Button type="button">Перейти в магазин</Button>
+            </Container>
+          </StyledLayout>
+          <img alt="Slide" src="/images/slider_img2.jpeg" />
+        </>
+        <>
+          <StyledLayout>
+            <Container>
+              <StyledTitle>Рыбные деликатесы</StyledTitle>
+              <Button type="button">Перейти в магазин</Button>
+            </Container>
+          </StyledLayout>
+          <img alt="Slide" src="/images/slider_img3.jpeg" />
+        </>
       </SlickSlider>
     </StyledWrapper>
   );

@@ -2,22 +2,25 @@ import { styled } from "~/theme";
 
 export const StyledWrapper = styled.section`
   height: ${({ theme }) => theme.rem(550)};
-  margin-bottom: ${({ theme }) => theme.rem(40)};
   position: relative;
+`;
+
+export const StyledLayout = styled.div<{ alignRight?: boolean }>`
+  height: auto;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: ${({ alignRight }) => (alignRight ? "right" : "center")};
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
 `;
 
 export const StyledTitle = styled.h2`
   color: white;
-  font: ${({ theme }) => `${theme.rem(64)} ${theme.fonts.fontQanelasBlack}`};
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  max-width: 700px;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
+  font: ${({ theme }) => `${theme.rem(64)} ${theme.fonts.fontBlack}`};
+  margin-bottom: ${({ theme }) => theme.rem(15)};
   text-transform: uppercase;
 `;
 

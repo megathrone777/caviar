@@ -17,29 +17,29 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
 
     <style jsx global>{`
       @font-face {
-        font-family: "Roboto";
-        src: url("/fonts/Roboto-Regular.ttf");
+        font-family: "Qanelas";
+        src: url("/fonts/Qanelas-Regular.ttf");
         font-weight: normal;
         font-style: normal;
       }
 
       @font-face {
-        font-family: "RobotoLight";
-        src: url("/fonts/Roboto-Light.ttf");
+        font-family: "QanelasLight";
+        src: url("/fonts/Qanelas-Light.ttf");
         font-weight: 300;
         font-style: normal;
       }
 
       @font-face {
-        font-family: "RobotoBold";
-        src: url("/fonts/Roboto-Bold.ttf");
+        font-family: "QanelasBold";
+        src: url("/fonts/Qanelas-Bold.ttf");
         font-weight: bold;
         font-style: normal;
       }
 
       @font-face {
-        font-family: "RobotoMedium";
-        src: url("/fonts/Roboto-Medium.ttf");
+        font-family: "QanelasMedium";
+        src: url("/fonts/Qanelas-Medium.ttf");
         font-weight: normal;
         font-style: normal;
       }
@@ -47,6 +47,13 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
       @font-face {
         font-family: "QanelasBlack";
         src: url("/fonts/Qanelas-Black.ttf");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "QanelasSemiBold";
+        src: url("/fonts/Qanelas-SemiBold.ttf");
         font-weight: normal;
         font-style: normal;
       }

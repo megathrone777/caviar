@@ -63,14 +63,12 @@ const slick = css`
 
   .slick-slide {
     display: none;
-    cursor: grab;
     float: left;
     height: 100%;
     min-height: 1px;
     position: relative;
-    z-index: 1;
 
-    div {
+    > div {
       height: 100%;
     }
 

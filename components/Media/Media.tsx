@@ -10,7 +10,7 @@ import {
 
 const Media: React.FC = () => (
   <StyledWrapper>
-    <StyledImage alt="Media image" src="/images/media_img.jpg" />
+    <StyledImage alt="Media image" src="/images/media_img.jpeg" />
 
     <StyledLayout>
       <Container>

@@ -1,12 +1,14 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.section`
-  margin-bottom: ${({ theme }) => theme.rem(20)};
+  background: url("/images/main_bg.png");
   overflow: hidden;
+  padding-bottom: ${({ theme }) => theme.rem(20)};
+  padding-top: ${({ theme }) => theme.rem(40)};
 `;
 
 export const StyledTitle = styled.h2`
-  font: ${({ theme }) => `${theme.rem(32)} ${theme.fonts.fontQanelasBlack}`};
+  font: ${({ theme }) => `${theme.rem(32)} ${theme.fonts.fontBlack}`};
   margin-bottom: ${({ theme }) => theme.rem(15)};
   text-transform: uppercase;
 `;

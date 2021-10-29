@@ -20,7 +20,7 @@ export const StyledItem = styled.li`
 
 export const StyledLink = styled.a`
   color: ${({ theme }) => theme.colors.black};
-  font: ${({ theme }) => `${theme.rem(13)} ${theme.fonts.fontBold}`};
+  font: ${({ theme }) => `${theme.rem(14)} ${theme.fonts.fontBold}`};
   letter-spacing: ${({ theme }) => theme.rem(2)};
   text-decoration: none;
   text-transform: uppercase;

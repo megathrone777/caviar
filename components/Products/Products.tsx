@@ -44,7 +44,7 @@ const Products: React.FC<TProps> = ({ title, text }) => {
       position: "top-center",
       showDismissButton: true,
       status: "success",
-      title: `${product.name} добавлен в корзину`,
+      title: `"${product.name}" добавлен в корзину`,
     });
   };
 

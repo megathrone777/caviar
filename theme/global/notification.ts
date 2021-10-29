@@ -5,7 +5,7 @@ const notification = css`
     &__container {
       top: ${({ theme }) => theme.rem(20)};
       position: fixed;
-      right: ${({ theme }) => theme.rem(20)};
+      left: ${({ theme }) => theme.rem(20)};
       z-index: 999;
     }
 

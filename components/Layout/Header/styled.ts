@@ -1,7 +1,7 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.header`
-  background-color: #f5f5f5;
+  background: url("/images/main_bg.png");
   height: ${({ theme }) => theme.rem(100)};
 `;
 

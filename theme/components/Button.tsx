@@ -7,7 +7,7 @@ export const Button = styled.button<{ inverted?: boolean }>`
   color: white;
   cursor: pointer;
   display: inline-block;
-  font: ${({ theme }) => `${theme.rem(12)} ${theme.fonts.fontBold}`};
+  font: ${({ theme }) => `${theme.rem(14)} ${theme.fonts.fontBold}`};
   height: ${({ theme }) => theme.rem(50)};
   min-width: ${({ theme }) => theme.rem(150)};
   padding-left: ${({ theme }) => theme.rem(35)};

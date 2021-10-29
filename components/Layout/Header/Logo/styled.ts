@@ -26,7 +26,7 @@ export const StyledImage = styled.img`
 export const StyledText = styled.span`
   color: ${({ theme }) => theme.colors.blue};
   display: block;
-  font: ${({ theme }) => `${theme.rem(15)} ${theme.fonts.fontQanelasBlack}`};
+  font: ${({ theme }) => `${theme.rem(15)} ${theme.fonts.fontBlack}`};
   text-transform: uppercase;
   white-space: nowrap;
   
