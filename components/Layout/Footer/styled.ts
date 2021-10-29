@@ -1,6 +1,6 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.footer`
-  background: url("/images/main_bg.png");
+  background-color: ${({ theme }) => theme.colors.black};
   min-height: ${({ theme }) => theme.rem(420)};
 `;

@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import { gql } from "@apollo/client";
 
 import client from "~/apollo-client";
-import { Layout, Cart, Media, Products, TProduct } from "~/components";
+import { Banner, Layout, Cart, Media, Products, TProduct } from "~/components";
 import CartPageQuery from "~/queries/cartpage.gql";
 
 interface TProps {
@@ -11,10 +11,11 @@ interface TProps {
 }
 
 const CartPage: NextPage<TProps> = ({ products }) => (
-  <Layout title="Main page">
+  <Layout title="Caviar Express | Корзина">
+    <Banner />
     <Cart />
-    <Products title="Рекоммендуемая продукция" items={products} />
     <Media />
+    <Products title="Рекоммендуемая продукция" items={products} />
   </Layout>
 );
 

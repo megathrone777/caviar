@@ -1,7 +1,7 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.section`
-  height: ${({ theme }) => theme.rem(500)};
+  height: ${({ theme }) => theme.rem(380)};
   position: relative;
 `;
 
