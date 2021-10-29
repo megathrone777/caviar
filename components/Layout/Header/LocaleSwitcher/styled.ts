@@ -12,8 +12,9 @@ export const StyledItem = styled.li`
   margin-left: ${({ theme }) => theme.rem(15)};
 `;
 
-export const StyledLink = styled.a`
-  color: ${({ theme }) => theme.colors.black};
+export const StyledLink = styled.a<{ isActive: boolean }>`
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.orange : theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.font};
   text-decoration: none;
   transition: color 0.2s ease-in;

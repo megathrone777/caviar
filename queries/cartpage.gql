@@ -1,4 +1,4 @@
-query HomePageQuery {
+query CartPageQuery {
   products(locale: "all", where: { isRecommended: true }) {
     description
     id
@@ -12,8 +12,4 @@ query HomePageQuery {
     quantity
     weight
   }
-
-  # slides(locale: "all") {
-
-  # }
 }

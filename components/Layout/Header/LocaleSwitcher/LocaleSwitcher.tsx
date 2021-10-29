@@ -7,16 +7,24 @@ const LocaleSwitcher: React.FC = () => {
     <StyledWrapper>
       <StyledList>
         <StyledItem>
-          <StyledLink href="#">EN</StyledLink>
-        </StyledItem>
-        {/* <StyledItem>
-          <StyledLink href="#">CZ</StyledLink>
+          <StyledLink href="#" isActive={false}>
+            EN
+          </StyledLink>
         </StyledItem>
         <StyledItem>
-          <StyledLink href="#">DE</StyledLink>
-        </StyledItem> */}
+          <StyledLink href="#" isActive={false}>
+            CZ
+          </StyledLink>
+        </StyledItem>
         <StyledItem>
-          <StyledLink href="#">RU</StyledLink>
+          <StyledLink href="#" isActive={false}>
+            DE
+          </StyledLink>
+        </StyledItem>
+        <StyledItem>
+          <StyledLink href="#" isActive>
+            RU
+          </StyledLink>
         </StyledItem>
       </StyledList>
     </StyledWrapper>

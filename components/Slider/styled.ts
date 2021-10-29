@@ -41,11 +41,11 @@ const StyledArrow = styled.button`
 `;
 
 export const StyledArrowLeft = styled(StyledArrow)`
-  left: ${({ theme }) => theme.rem(100)};
+  left: ${({ theme }) => theme.rem(70)};
   transform: translateY(-50%) rotate(180deg);
 `;
 
 export const StyledArrowRight = styled(StyledArrow)`
-  right: ${({ theme }) => theme.rem(100)};
+  right: ${({ theme }) => theme.rem(70)};
   transform: translateY(-50%);
 `;

@@ -4,7 +4,6 @@ export const StyledWrapper = styled.div<{ isFixed: boolean }>`
   background-color: transparent;
   border-radius: 0;
   flex: 0 1 25%;
-
   position: relative;
   right: inherit;
   text-align: right;
@@ -14,9 +13,8 @@ export const StyledWrapper = styled.div<{ isFixed: boolean }>`
   ${({ isFixed }) =>
     isFixed &&
     css`
-      background-color: ${({ theme }) => theme.colors.black};
+      background-color: ${({ theme }) => theme.colors.blue};
       border-radius: ${({ theme }) => theme.rem(20)};
-
       position: fixed;
       right: ${({ theme }) => theme.rem(40)};
       top: ${({ theme }) => theme.rem(40)};
@@ -42,8 +40,8 @@ export const StyledIcon = styled.i<{ isFixed: boolean }>`
   width: ${({ theme }) => theme.rem(40)};
 `;
 
-export const StyledQuantity = styled.span`
-  color: ${({ theme }) => theme.colors.orange};
+export const StyledQuantity = styled.span<{ isFixed: boolean }>`
+  color: ${({ isFixed, theme }) => (isFixed ? "white" : theme.colors.orange)};
   display: block;
   font: ${({ theme }) => `${theme.rem(13)} ${theme.fonts.fontBold}`};
   left: ${({ theme }) => theme.rem(6)};

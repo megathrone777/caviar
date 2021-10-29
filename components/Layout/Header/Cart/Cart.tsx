@@ -54,7 +54,9 @@ const Cart: React.FC = () => {
 
           <StyledIcon isFixed={cartIsFixed}>
             <SvgCartIcon />
-            <StyledQuantity>{state.cart.products.length}</StyledQuantity>
+            <StyledQuantity isFixed={cartIsFixed}>
+              {state.cart.products.length}
+            </StyledQuantity>
           </StyledIcon>
         </StyledLink>
       </Link>
