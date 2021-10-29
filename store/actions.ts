@@ -10,7 +10,7 @@ export interface TAction {
   type: TActionTypes;
 }
 
-export const removeFromCart = (id: number): TAction => ({
+export const removeFromCart = (id: string): TAction => ({
   payload: id,
   type: TActionTypes.REMOVE_PRODUCT,
 });

@@ -54,7 +54,7 @@ const Slider: React.FC = () => {
               </Button>
             </Container>
           </StyledLayout>
-          <img alt="Slide" src="/images/slider_img.jpeg" />
+          <img alt="Slide" src="/images/slider_img.jpg" />
         </>
         <>
           <StyledLayout alignRight>
@@ -67,7 +67,7 @@ const Slider: React.FC = () => {
               <Button type="button">Перейти в магазин</Button>
             </Container>
           </StyledLayout>
-          <img alt="Slide" src="/images/slider_img2.jpeg" />
+          <img alt="Slide" src="/images/slider_img2.jpg" />
         </>
         <>
           <StyledLayout>
@@ -76,7 +76,7 @@ const Slider: React.FC = () => {
               <Button type="button">Перейти в магазин</Button>
             </Container>
           </StyledLayout>
-          <img alt="Slide" src="/images/slider_img3.jpeg" />
+          <img alt="Slide" src="/images/slider_img3.jpg" />
         </>
       </SlickSlider>
     </StyledWrapper>

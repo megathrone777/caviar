@@ -1,5 +1,5 @@
 query HomePageQuery {
-  products(locale: "all", limit: 8) {
+  products(locale: "all") {
     description
     id
     imageSmall {

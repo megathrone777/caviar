@@ -3,7 +3,19 @@ import Link from "next/link";
 
 import { TProduct } from "~/components";
 import { useStore, removeFromCart } from "~/store";
-import { StyledWrapper } from "./styled";
+import { Button, Container } from "~/theme/components";
+import {
+  StyledWrapper,
+  StyledContent,
+  StyledRow,
+  StyledCell,
+  StyledTitle,
+  StyledImage,
+  StyledTitleImage,
+  StyledName,
+  StyledPrice,
+  StyledImageWrapper,
+} from "./styled";
 
 const Cart: React.FC = () => {
   const { state, dispatch } = useStore();
@@ -11,54 +23,78 @@ const Cart: React.FC = () => {
     cart: { products },
   } = state;
 
+  const handleProductRemove = (id: string): void => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <StyledWrapper>
-      {products && !!products.length ? (
-        <ul>
-          {products.map(
-            ({
-              id,
-              image,
-              name,
-              priceDefault,
-              priceDiscounted,
-              quantity,
-            }: TProduct): React.ReactElement => (
-              <li key={`${id}-${name}`}>
-                <div>
-                  <Link href="#" passHref>
-                    <a>
-                      <img alt={name} src={`/images/fd`} />
-                    </a>
-                  </Link>
-                </div>
+      <Container>
+        <StyledTitle>
+          <StyledTitleImage alt="Logo" src="/images/logo_img.png" />
+          Ваш заказ
+        </StyledTitle>
 
-                <p>
-                  <Link href="#" passHref>
-                    <a>{name}</a>
-                  </Link>
-                </p>
+        {products && !!products.length ? (
+          <StyledContent>
+            {products.map(
+              ({
+                id,
+                imageSmall,
+                name,
+                priceDefault,
+                priceDiscounted,
+                quantity,
+                weight,
+              }: TProduct): React.ReactElement => (
+                <StyledRow key={`${id}-${name}`}>
+                  <StyledCell>
+                    <StyledImageWrapper>
+                      <Link href="#" passHref>
+                        <a>
+                          <StyledImage alt={name} src={imageSmall.url} />
+                        </a>
+                      </Link>
+                    </StyledImageWrapper>
+                  </StyledCell>
 
-                <div>
-                  {priceDiscounted && <p>{priceDiscounted}</p>}
-                  <p>{priceDefault}</p>
-                  <br />
-                  <span>{quantity}</span>
-                </div>
+                  <StyledCell>
+                    <Link href="#" passHref>
+                      <StyledName>
+                        {name}
+                        {weight}
+                      </StyledName>
+                    </Link>
+                  </StyledCell>
 
-                <button
-                  type="button"
-                  onClick={() => dispatch(removeFromCart(id))}
-                >
-                  Remove from cart
-                </button>
-              </li>
-            )
-          )}
-        </ul>
-      ) : (
-        <div>It is empty now</div>
-      )}
+                  <StyledCell>
+                    {priceDiscounted && (
+                      <StyledPrice>{priceDiscounted}</StyledPrice>
+                    )}
+                    <StyledPrice>{priceDefault} €</StyledPrice>
+                  </StyledCell>
+
+                  <StyledCell>
+                    <span>{quantity}</span>
+                  </StyledCell>
+
+                  <StyledCell>
+                    <Button
+                      inverted
+                      type="button"
+                      onClick={() => handleProductRemove(id)}
+                    >
+                      Удалить
+                    </Button>
+                  </StyledCell>
+                </StyledRow>
+              )
+            )}
+          </StyledContent>
+        ) : (
+          <div>It is empty now</div>
+        )}
+      </Container>
     </StyledWrapper>
   );
 };

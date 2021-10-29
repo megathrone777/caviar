@@ -48,7 +48,7 @@ const Cart: React.FC = () => {
         <StyledLink isFixed={cartIsFixed}>
           {totalProductsPrice > 0 && (
             <StyledPrice isFixed={cartIsFixed}>
-              {totalProductsPrice} CZK
+              {totalProductsPrice} €
             </StyledPrice>
           )}
 

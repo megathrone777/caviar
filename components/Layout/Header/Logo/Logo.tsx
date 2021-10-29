@@ -8,7 +8,7 @@ const Logo: React.FC = () => (
     <Link href="/" passHref>
       <StyledLink>
         <StyledImage alt="Logo" src="/images/logo_img.png" />
-        <StyledText>Royal Caviar</StyledText>
+        <StyledText>Caviar Express</StyledText>
       </StyledLink>
     </Link>
   </StyledWrapper>

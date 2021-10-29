@@ -1,5 +1,5 @@
 export interface TProduct {
-  id: number;
+  id: string;
   description: string;
   imageSmall: {
     url: string;
