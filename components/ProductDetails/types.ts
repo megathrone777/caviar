@@ -7,4 +7,5 @@ export interface TProduct {
   name: string;
   priceDefault: number;
   priceDiscounted: number;
+  quantity: number;
 }

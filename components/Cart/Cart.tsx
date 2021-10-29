@@ -35,6 +35,7 @@ const Cart: React.FC = () => {
               name,
               priceDefault,
               priceDiscounted,
+              quantity,
             }: TProduct): React.ReactElement => (
               <StyledListItem key={`${id}-${name}`}>
                 <StyledListItemImageHolder>
@@ -64,7 +65,7 @@ const Cart: React.FC = () => {
                     {priceDefault}
                   </StyledListItemPriceDefault>
                 </StyledListItemPrices>
-
+                <h1>Quantity: {quantity}</h1>
                 <button
                   type="button"
                   onClick={() => dispatch(removeFromCart(id))}

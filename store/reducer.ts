@@ -27,14 +27,29 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       });
     },
 
-    [TActionTypes.ADD_TO_CART]: (): TState =>
-      setStateToLocalStorage({
+    [TActionTypes.ADD_TO_CART]: (): TState => {
+      const products = [...state.cart.products];
+      const productIndex = products.findIndex(
+        (product: TProduct) => product.id === payload.id
+      );
+
+      const isProductInCart = productIndex > -1;
+
+      if (isProductInCart) {
+        products[productIndex].quantity = products[productIndex].quantity + 1;
+      } else {
+        products.push(payload);
+      }
+
+      return setStateToLocalStorage({
         ...state,
         cart: {
           ...state.cart,
-          products: [...state.cart.products, payload],
+          products,
         },
-      }),
+      });
+    },
+
     DEFAULT: (): TState => {
       return state;
     },
