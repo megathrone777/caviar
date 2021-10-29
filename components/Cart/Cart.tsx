@@ -9,12 +9,13 @@ import {
   StyledContent,
   StyledRow,
   StyledCell,
-  StyledTitle,
   StyledImage,
-  StyledTitleImage,
   StyledName,
   StyledPrice,
   StyledImageWrapper,
+  StyledTotalPrice,
+  StyledTotalPriceAmount,
+  StyledWeight,
 } from "./styled";
 
 const Cart: React.FC = () => {
@@ -23,6 +24,15 @@ const Cart: React.FC = () => {
     cart: { products },
   } = state;
 
+  const addedProductsPrice: number[] = products.map(
+    ({ totalPrice }: TProduct): number => totalPrice
+  );
+
+  const totalProductsPrice = addedProductsPrice.reduce(
+    (accumulator, currentPrice) => accumulator + currentPrice,
+    0
+  );
+
   const handleProductRemove = (id: string): void => {
     dispatch(removeFromCart(id));
   };
@@ -30,67 +40,65 @@ const Cart: React.FC = () => {
   return (
     <StyledWrapper>
       <Container>
-        <StyledTitle>
-          <StyledTitleImage alt="Logo" src="/images/logo_img.png" />
-          Ваш заказ
-        </StyledTitle>
-
         {products && !!products.length ? (
-          <StyledContent>
-            {products.map(
-              ({
-                id,
-                imageSmall,
-                name,
-                priceDefault,
-                priceDiscounted,
-                quantity,
-                weight,
-              }: TProduct): React.ReactElement => (
-                <StyledRow key={`${id}-${name}`}>
-                  <StyledCell>
-                    <StyledImageWrapper>
+          <>
+            <StyledContent>
+              {products.map(
+                ({
+                  id,
+                  imageSmall,
+                  name,
+                  quantity,
+                  totalPrice,
+                  weight,
+                }: TProduct): React.ReactElement => (
+                  <StyledRow key={`${id}-${name}`}>
+                    <StyledCell>
+                      <StyledImageWrapper>
+                        <Link href="#" passHref>
+                          <a>
+                            <StyledImage alt={name} src={imageSmall.url} />
+                          </a>
+                        </Link>
+                      </StyledImageWrapper>
+                    </StyledCell>
+
+                    <StyledCell>
                       <Link href="#" passHref>
-                        <a>
-                          <StyledImage alt={name} src={imageSmall.url} />
-                        </a>
+                        <StyledName>{name}</StyledName>
                       </Link>
-                    </StyledImageWrapper>
-                  </StyledCell>
+                      <StyledWeight>{weight}</StyledWeight>
+                    </StyledCell>
 
-                  <StyledCell>
-                    <Link href="#" passHref>
-                      <StyledName>
-                        {name}
-                        {weight}
-                      </StyledName>
-                    </Link>
-                  </StyledCell>
+                    <StyledCell>
+                      <StyledPrice>{totalPrice} €</StyledPrice>
+                    </StyledCell>
 
-                  <StyledCell>
-                    {priceDiscounted && (
-                      <StyledPrice>{priceDiscounted}</StyledPrice>
-                    )}
-                    <StyledPrice>{priceDefault} €</StyledPrice>
-                  </StyledCell>
+                    <StyledCell>
+                      <span>{quantity}</span>
+                    </StyledCell>
 
-                  <StyledCell>
-                    <span>{quantity}</span>
-                  </StyledCell>
+                    <StyledCell>
+                      <Button
+                        inverted
+                        type="button"
+                        onClick={() => handleProductRemove(id)}
+                      >
+                        Удалить
+                      </Button>
+                    </StyledCell>
+                  </StyledRow>
+                )
+              )}
+            </StyledContent>
 
-                  <StyledCell>
-                    <Button
-                      inverted
-                      type="button"
-                      onClick={() => handleProductRemove(id)}
-                    >
-                      Удалить
-                    </Button>
-                  </StyledCell>
-                </StyledRow>
-              )
-            )}
-          </StyledContent>
+            <StyledTotalPrice>
+              Общая цена:{" "}
+              <StyledTotalPriceAmount>
+                {totalProductsPrice} €
+              </StyledTotalPriceAmount>
+            </StyledTotalPrice>
+          </>
         ) : (
           <div>It is empty now</div>
         )}

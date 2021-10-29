@@ -1,3 +1,4 @@
+export { Banner } from "./Banner";
 export { Cart } from "./Cart";
 export { Layout } from "./Layout";
 export { Media } from "./Media";
@@ -6,4 +7,4 @@ export { Products } from "./Products";
 export { Slider } from "./Slider";
 
 export type { TProduct } from "./ProductDetails/types";
-export type { TSlide } from './Slider/types';
+export type { TSlide } from "./Slider/types";

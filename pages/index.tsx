@@ -19,7 +19,7 @@ interface TProps {
 }
 
 const IndexPage: NextPage<TProps> = ({ products }) => (
-  <Layout title="Caviar | Home page">
+  <Layout title="Caviar Express | Главная">
     <Slider />
     <Products
       items={products}
