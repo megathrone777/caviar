@@ -1,7 +1,7 @@
 import React from "react";
 import { set as setToLocalStorage } from "local-storage";
 
-import { TProduct } from "~/components/ProductDetails/types";
+import { TProduct } from "~/components";
 import { TAction, TActionTypes } from "./actions";
 import { TState } from "./initialState";
 
@@ -35,6 +35,8 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
 
       if (products[foundIndex]) {
         products[foundIndex].quantity = products[foundIndex].quantity + 1;
+        products[foundIndex].totalPrice =
+          products[foundIndex].totalPrice + parseInt(payload.priceDefault);
       } else {
         products.push(payload);
       }

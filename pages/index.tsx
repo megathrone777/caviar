@@ -1,12 +1,28 @@
 import React from "react";
 import Link from "next/link";
+import { NextPage } from "next";
+import { gql } from "@apollo/client";
 
-import { Layout, Media, Products, Slider } from "~/components";
+import client from "~/apollo-client";
+import {
+  Layout,
+  Media,
+  Products,
+  Slider,
+  TProduct,
+  TSlide,
+} from "~/components";
+import HomePageQuery from "~/queries/homepage.gql";
 
-const IndexPage: React.FC = () => (
+interface TProps {
+  products: TProduct[];
+}
+
+const IndexPage: NextPage<TProps> = ({ products }) => (
   <Layout title="Caviar | Home page">
     <Slider />
     <Products
+      items={products}
       text={
         <>
           Наш икорный завод производит{" "}
@@ -43,5 +59,19 @@ const IndexPage: React.FC = () => (
     <Media />
   </Layout>
 );
+
+IndexPage.getInitialProps = async () => {
+  const {
+    data: { products },
+  } = await client.query({
+    query: gql`
+      ${HomePageQuery}
+    `,
+  });
+
+  return {
+    products,
+  };
+};
 
 export default IndexPage;

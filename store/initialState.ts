@@ -1,6 +1,6 @@
 import { get as getFromLocalStorage } from "local-storage";
 
-import { TProduct } from "~/components/ProductDetails/types";
+import { TProduct } from "~/components";
 
 interface TShopSettings {
   shopIsClosed: boolean;

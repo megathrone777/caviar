@@ -1,4 +1,4 @@
-import { TProduct } from "~/components/ProductDetails/types";
+import { TProduct } from "~/components";
 
 export enum TActionTypes {
   REMOVE_PRODUCT = "REMOVE_PRODUCT",

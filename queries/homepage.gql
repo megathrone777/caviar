@@ -1,0 +1,19 @@
+query HomePageQuery {
+  products(locale: "all", limit: 8) {
+    description
+    id
+    imageSmall {
+      url
+    }
+    locale
+    name
+    priceDefault
+    priceDiscounted
+    quantity
+    weight
+  }
+
+  # slides(locale: "all") {
+
+  # }
+}

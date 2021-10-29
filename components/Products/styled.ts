@@ -84,7 +84,9 @@ export const StyledListItemPrices = styled.div`
   text-align: center;
 `;
 
-export const StyledListItemPriceDefault = styled.span``;
+export const StyledListItemPriceDefault = styled.span`
+  font-size: ${({ theme }) => theme.rem(18)};
+`;
 
 export const StyledListItemPriceDiscounted = styled.span``;
 

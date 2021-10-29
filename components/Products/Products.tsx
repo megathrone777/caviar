@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useNotifications } from "reapop";
 
 import { useStore, addToCart } from "~/store";
-import { TProduct } from "~/components/ProductDetails/types";
+import { TProduct } from "~/components";
 import { Button, Container } from "~/theme/components";
 import {
   StyledWrapper,
@@ -24,14 +24,13 @@ import {
   StyledText,
 } from "./styled";
 
-import productsList from "./productsList.json";
-
 interface TProps {
+  items: TProduct[];
   title: string;
   text?: React.ReactElement;
 }
 
-const Products: React.FC<TProps> = ({ title, text }) => {
+const Products: React.FC<TProps> = ({ items, title, text }) => {
   const { dispatch } = useStore();
   const { notify } = useNotifications();
 
@@ -56,13 +55,13 @@ const Products: React.FC<TProps> = ({ title, text }) => {
           {title}
         </StyledTitle>
         {text && <StyledText>{text}</StyledText>}
-        {productsList && !!productsList.length && (
+        {items && !!items.length && (
           <StyledList>
-            {productsList.map(
+            {items.map(
               ({
                 description,
                 id,
-                image,
+                imageSmall,
                 name,
                 priceDefault,
                 priceDiscounted,
@@ -73,10 +72,7 @@ const Products: React.FC<TProps> = ({ title, text }) => {
                   <StyledListItemImageHolder>
                     <Link href={`/product/${id}`} passHref>
                       <StyledListItemLink>
-                        <StyledListItemImage
-                          alt={name}
-                          src={`/images/${image.url}`}
-                        />
+                        <StyledListItemImage alt={name} src={imageSmall.url}   />
                       </StyledListItemLink>
                     </Link>
                   </StyledListItemImageHolder>
@@ -84,8 +80,7 @@ const Products: React.FC<TProps> = ({ title, text }) => {
                   <StyledListItemName>
                     <Link href="#" passHref>
                       <StyledListItemNameLink>
-                        {name}
-                        {" "}
+                        {name}{" "}
                         <StyledListItemWeight>{weight}</StyledListItemWeight>
                       </StyledListItemNameLink>
                     </Link>
@@ -98,7 +93,7 @@ const Products: React.FC<TProps> = ({ title, text }) => {
                       </StyledListItemPriceDiscounted>
                     )}
                     <StyledListItemPriceDefault>
-                      {priceDefault} Ft
+                      {priceDefault} €
                     </StyledListItemPriceDefault>
                   </StyledListItemPrices>
 
@@ -108,11 +103,12 @@ const Products: React.FC<TProps> = ({ title, text }) => {
                         handleProductAdd({
                           description,
                           id,
-                          image,
+                          imageSmall,
                           name,
                           priceDefault,
                           priceDiscounted,
                           quantity,
+                          totalPrice: priceDefault,
                           weight,
                         })
                       }

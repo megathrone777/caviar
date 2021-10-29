@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
+import { TProduct } from "~/components";
 import { useStore } from "~/store";
 import { SvgCartIcon } from "~/icons";
 import {
@@ -23,6 +24,15 @@ const Cart: React.FC = () => {
     }
   }, [cartIsFixed, toggleCartFixed]);
 
+  const addedProductsPrice: number[] = state.cart.products.map(
+    ({ totalPrice }: TProduct): number => totalPrice
+  );
+
+  const totalProductsPrice = addedProductsPrice.reduce(
+    (accumulator, currentPrice) => accumulator + currentPrice,
+    0
+  );
+
   useEffect(() => {
     checkCartPosition();
     window.addEventListener("scroll", checkCartPosition);
@@ -36,7 +46,12 @@ const Cart: React.FC = () => {
     <StyledWrapper isFixed={cartIsFixed}>
       <Link href="/cart" passHref>
         <StyledLink isFixed={cartIsFixed}>
-          <StyledPrice isFixed={cartIsFixed}>$1000</StyledPrice>
+          {totalProductsPrice > 0 && (
+            <StyledPrice isFixed={cartIsFixed}>
+              {totalProductsPrice} CZK
+            </StyledPrice>
+          )}
+
           <StyledIcon isFixed={cartIsFixed}>
             <SvgCartIcon />
             <StyledQuantity>{state.cart.products.length}</StyledQuantity>
