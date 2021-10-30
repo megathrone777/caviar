@@ -27,6 +27,46 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       });
     },
 
+    [TActionTypes.INCREASE_QUANTITY]: (): TState => {
+      const products = [...state.cart.products];
+
+      const foundIndex = products.findIndex(
+        (product: TProduct) => product.id === payload.id
+      );
+      products[foundIndex].quantity++;
+      products[foundIndex].totalPrice += parseInt(payload.priceDefault);
+
+      return setStateToLocalStorage({
+        ...state,
+        cart: {
+          ...state.cart,
+          products,
+        },
+      });
+    },
+
+    [TActionTypes.DECREASE_QUANTITY]: (): TState => {
+      const products = [...state.cart.products];
+
+      const foundIndex = products.findIndex(
+        (product: TProduct) => product.id === payload.id
+      );
+
+      if (products[foundIndex].quantity === 1) {
+        products.filter((product: TProduct) => product.id !== payload.id);
+      } else {
+        products[foundIndex].quantity--;
+        products[foundIndex].totalPrice -= parseInt(payload.priceDefault);
+      }
+      return setStateToLocalStorage({
+        ...state,
+        cart: {
+          ...state.cart,
+          products,
+        },
+      });
+    },
+
     [TActionTypes.ADD_TO_CART]: (): TState => {
       const products = [...state.cart.products];
       const foundIndex = products.findIndex(
@@ -34,9 +74,8 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       );
 
       if (products[foundIndex]) {
-        products[foundIndex].quantity = products[foundIndex].quantity + 1;
-        products[foundIndex].totalPrice =
-          products[foundIndex].totalPrice + parseInt(payload.priceDefault);
+        products[foundIndex].quantity++;
+        products[foundIndex].totalPrice += parseInt(payload.priceDefault);
       } else {
         products.push(payload);
       }

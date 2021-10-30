@@ -2,7 +2,12 @@ import React from "react";
 import Link from "next/link";
 
 import { TProduct } from "~/components";
-import { useStore, removeFromCart } from "~/store";
+import {
+  useStore,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "~/store";
 import { Button, Container } from "~/theme/components";
 import {
   StyledWrapper,
@@ -33,8 +38,16 @@ const Cart: React.FC = () => {
     0
   );
 
-  const handleProductRemove = (id: string): void => {
+  const handleRemoveProduct = (id: string): void => {
     dispatch(removeFromCart(id));
+  };
+
+  const handleIncreaseProduct = (id: string, priceDefault: number): void => {
+    dispatch(increaseQuantity(id, priceDefault));
+  };
+
+  const handleDecreaseProduct = (id: string, priceDefault: number): void => {
+    dispatch(decreaseQuantity(id, priceDefault));
   };
 
   return (
@@ -50,6 +63,7 @@ const Cart: React.FC = () => {
                   name,
                   quantity,
                   totalPrice,
+                  priceDefault,
                   weight,
                 }: TProduct): React.ReactElement => (
                   <StyledRow key={`${id}-${name}`}>
@@ -57,7 +71,7 @@ const Cart: React.FC = () => {
                       <StyledImageWrapper>
                         <Link href="#" passHref>
                           <a>
-                            <StyledImage alt={name} src={imageSmall.url} />
+                            <StyledImage alt={name} src={imageSmall?.url} />
                           </a>
                         </Link>
                       </StyledImageWrapper>
@@ -82,9 +96,21 @@ const Cart: React.FC = () => {
                       <Button
                         inverted
                         type="button"
-                        onClick={() => handleProductRemove(id)}
+                        onClick={() => handleRemoveProduct(id)}
                       >
                         Удалить
+                      </Button>
+                      <Button
+                        type="button"
+                        onClick={() => handleIncreaseProduct(id, priceDefault)}
+                      >
+                        +
+                      </Button>
+                      <Button
+                        type="button"
+                        onClick={() => handleDecreaseProduct(id, priceDefault)}
+                      >
+                        -
                       </Button>
                     </StyledCell>
                   </StyledRow>
