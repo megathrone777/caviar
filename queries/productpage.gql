@@ -1,0 +1,16 @@
+query ProductPageQuery($slug: String!) {
+  productBySlug(slug: $slug) {
+    id
+    description
+    name
+    priceDefault
+    weight
+    quantity
+    imageSmall {
+      url
+    }
+    imageMain {
+      url
+    }
+  }
+}

@@ -15,7 +15,7 @@ const Media: React.FC = () => (
     <StyledLayout>
       <Container>
         <StyledTitle>Покупайте икру из первых рук</StyledTitle>
-        <Button type="button">Перейти в магазин</Button>
+        <Button href="/shop">Перейти в магазин</Button>
       </Container>
     </StyledLayout>
   </StyledWrapper>

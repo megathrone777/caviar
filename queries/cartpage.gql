@@ -9,6 +9,7 @@ query CartPageQuery {
     name
     priceDefault
     priceDiscounted
+    slug
     quantity
     weight
   }

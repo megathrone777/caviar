@@ -1,10 +1,12 @@
 import React from "react";
 import { NextPage } from "next";
 
-import { Layout } from "~/components";
+import { Banner, Layout } from "~/components";
 
-const ShopPage: NextPage = () => {
-  return <Layout title="Caviar Express | Магазин">Shop</Layout>;
-};
+const ShopPage: NextPage = () => (
+  <Layout title="Caviar Express | Магазин">
+    <Banner title="Магазин" />
+  </Layout>
+);
 
 export default ShopPage;

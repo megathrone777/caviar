@@ -49,13 +49,18 @@ const Cart: React.FC = () => {
                   imageSmall,
                   name,
                   quantity,
+                  slug,
                   totalPrice,
                   weight,
                 }: TProduct): React.ReactElement => (
                   <StyledRow key={`${id}-${name}`}>
                     <StyledCell>
                       <StyledImageWrapper>
-                        <Link href="#" passHref>
+                        <Link
+                          as={`/product/${slug}`}
+                          href={`/product/${slug}`}
+                          passHref
+                        >
                           <a>
                             <StyledImage alt={name} src={imageSmall.url} />
                           </a>
@@ -64,7 +69,11 @@ const Cart: React.FC = () => {
                     </StyledCell>
 
                     <StyledCell>
-                      <Link href="#" passHref>
+                      <Link
+                        as={`/product/${slug}`}
+                        href={`/product/${slug}`}
+                        passHref
+                      >
                         <StyledName>{name}</StyledName>
                       </Link>
                       <StyledWeight>{weight}</StyledWeight>
@@ -79,11 +88,7 @@ const Cart: React.FC = () => {
                     </StyledCell>
 
                     <StyledCell>
-                      <Button
-                        inverted
-                        type="button"
-                        onClick={() => handleProductRemove(id)}
-                      >
+                      <Button inverted onClick={() => handleProductRemove(id)}>
                         Удалить
                       </Button>
                     </StyledCell>

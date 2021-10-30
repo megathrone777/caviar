@@ -12,7 +12,7 @@ interface TProps {
 
 const CartPage: NextPage<TProps> = ({ products }) => (
   <Layout title="Caviar Express | Корзина">
-    <Banner />
+    <Banner title="Ваш заказ" />
     <Cart />
     <Media />
     <Products title="Рекоммендуемая продукция" items={products} />
