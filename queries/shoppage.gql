@@ -1,0 +1,16 @@
+query ShopPageQuery($where: JSON) {
+  products(locale: "all", where: $where) {
+    description
+    id
+    imageSmall {
+      url
+    }
+    locale
+    name
+    priceDefault
+    priceDiscounted
+    slug
+    quantity
+    weight
+  }
+}

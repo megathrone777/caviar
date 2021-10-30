@@ -5,6 +5,7 @@ export interface TCartProduct {
   };
   name: string;
   quantity: number;
+  priceDefault: number;
   slug: string;
   totalPrice: number;
   weight: string;

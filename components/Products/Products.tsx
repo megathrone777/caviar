@@ -97,7 +97,7 @@ const Products: React.FC<TProps> = ({ items, title, text }) => {
                   <StyledListItemPrices>
                     {priceDiscounted && (
                       <StyledListItemPriceDiscounted>
-                        {priceDiscounted}
+                        {priceDiscounted} €
                       </StyledListItemPriceDiscounted>
                     )}
                     <StyledListItemPriceDefault>
@@ -113,12 +113,12 @@ const Products: React.FC<TProps> = ({ items, title, text }) => {
                           imageSmall,
                           name,
                           quantity,
+                          priceDefault,
                           totalPrice: priceDefault,
                           slug,
                           weight,
                         })
                       }
-                      type="button"
                     >
                       Добавить в корзину
                     </Button>

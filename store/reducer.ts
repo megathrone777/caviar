@@ -28,6 +28,7 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
     },
 
     [TActionTypes.ADD_TO_CART]: (): TState => {
+      console.log(payload);
       const products = [...state.cart.products];
       const foundIndex = products.findIndex(
         (product: TCartProduct) => product.id === payload.id

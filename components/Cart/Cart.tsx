@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { TProduct } from "~/components";
+import { TCartProduct, TProduct } from "~/components";
 import { useStore, removeFromCart } from "~/store";
 import { Button, Container } from "~/theme/components";
 import {
@@ -25,7 +25,7 @@ const Cart: React.FC = () => {
   } = state;
 
   const addedProductsPrice: number[] = products.map(
-    ({ totalPrice }: TProduct): number => totalPrice
+    ({ totalPrice }: TCartProduct): number => totalPrice
   );
 
   const totalProductsPrice = addedProductsPrice.reduce(
@@ -52,7 +52,7 @@ const Cart: React.FC = () => {
                   slug,
                   totalPrice,
                   weight,
-                }: TProduct): React.ReactElement => (
+                }: TCartProduct): React.ReactElement => (
                   <StyledRow key={`${id}-${name}`}>
                     <StyledCell>
                       <StyledImageWrapper>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNotifications } from "reapop";
+import ReactMarkdown from "react-markdown";
 
 import { useStore, addToCart } from "~/store";
 import { TCartProduct } from "~/components";
@@ -57,7 +58,9 @@ const ProductDetails: React.FC<TProps> = ({
           </StyledColumn>
 
           <StyledColumn>
-            <StyledDescription>{description}</StyledDescription>
+            <StyledDescription>
+              <ReactMarkdown>{description}</ReactMarkdown>
+            </StyledDescription>
             <StyledInfo>
               <StyledPrice>{priceDefault} €</StyledPrice>
               <StyledWeight>Цена за {weight}</StyledWeight>
@@ -69,6 +72,7 @@ const ProductDetails: React.FC<TProps> = ({
                   id,
                   imageSmall,
                   name,
+                  priceDefault,
                   quantity: 1,
                   slug,
                   totalPrice: priceDefault,

@@ -1,6 +1,7 @@
 import styled, {
   createGlobalStyle,
   css,
+  keyframes,
   ThemeProvider,
 } from "styled-components";
 
@@ -22,4 +23,4 @@ const theme: ThemeInterface = {
   },
 };
 
-export { createGlobalStyle, css, styled, theme, ThemeProvider };
+export { createGlobalStyle, css, keyframes, styled, theme, ThemeProvider };

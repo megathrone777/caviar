@@ -22,9 +22,27 @@ export const StyledImage = styled.img`
 `;
 
 export const StyledDescription = styled.div`
-  font: ${({ theme }) => `${theme.rem(18)} ${theme.fonts.fontSemiBold}`};
   margin-bottom: ${({ theme }) => theme.rem(25)};
   padding-top: ${({ theme }) => theme.rem(25)};
+
+  > ul {
+    margin-bottom: ${({ theme }) => theme.rem(10)};
+  }
+
+  > p {
+    font-family: ${({ theme }) => theme.fonts.font};
+    margin-bottom: ${({ theme }) => theme.rem(10)};
+
+    > em {
+      display: block;
+      margin-bottom: ${({ theme }) => theme.rem(10)};
+      padding-left: ${({ theme }) => theme.rem(10)};
+    }
+
+    > strong {
+      font: ${({ theme }) => `${theme.rem(18)} ${theme.fonts.fontSemiBold}`}; 
+    }
+  }
 `;
 
 export const StyledPrice = styled.p`

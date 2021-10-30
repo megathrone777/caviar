@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
-import { TProduct } from "~/components";
+import { TCartProduct } from "~/components";
 import { useStore } from "~/store";
 import { SvgCartIcon } from "~/icons";
 import {
@@ -25,7 +25,7 @@ const Cart: React.FC = () => {
   }, [cartIsFixed, toggleCartFixed]);
 
   const addedProductsPrice: number[] = state.cart.products.map(
-    ({ totalPrice }: TProduct): number => totalPrice
+    ({ totalPrice }: TCartProduct): number => totalPrice
   );
 
   const totalProductsPrice = addedProductsPrice.reduce(
