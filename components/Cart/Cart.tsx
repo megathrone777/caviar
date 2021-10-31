@@ -2,7 +2,12 @@ import React from "react";
 import Link from "next/link";
 
 import { TCartProduct, TProduct } from "~/components";
-import { useStore, removeFromCart } from "~/store";
+import {
+  useStore,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "~/store";
 import { Button, Container } from "~/theme/components";
 import {
   StyledWrapper,
@@ -25,7 +30,7 @@ const Cart: React.FC = () => {
   } = state;
 
   const addedProductsPrice: number[] = products.map(
-    ({ totalPrice }: TCartProduct): number => totalPrice
+    ({ totalPrice }: TProduct): number => totalPrice
   );
 
   const totalProductsPrice = addedProductsPrice.reduce(
@@ -33,8 +38,16 @@ const Cart: React.FC = () => {
     0
   );
 
-  const handleProductRemove = (id: string): void => {
+  const handleRemoveProduct = (id: string): void => {
     dispatch(removeFromCart(id));
+  };
+
+  const handleIncreaseProduct = (id: string, priceDefault: number): void => {
+    dispatch(increaseQuantity(id, priceDefault));
+  };
+
+  const handleDecreaseProduct = (id: string, priceDefault: number): void => {
+    dispatch(decreaseQuantity(id, priceDefault));
   };
 
   return (
@@ -49,31 +62,23 @@ const Cart: React.FC = () => {
                   imageSmall,
                   name,
                   quantity,
-                  slug,
                   totalPrice,
+                  priceDefault,
                   weight,
                 }: TCartProduct): React.ReactElement => (
                   <StyledRow key={`${id}-${name}`}>
                     <StyledCell>
                       <StyledImageWrapper>
-                        <Link
-                          as={`/product/${slug}`}
-                          href={`/product/${slug}`}
-                          passHref
-                        >
+                        <Link href="#" passHref>
                           <a>
-                            <StyledImage alt={name} src={imageSmall.url} />
+                            <StyledImage alt={name} src={imageSmall?.url} />
                           </a>
                         </Link>
                       </StyledImageWrapper>
                     </StyledCell>
 
                     <StyledCell>
-                      <Link
-                        as={`/product/${slug}`}
-                        href={`/product/${slug}`}
-                        passHref
-                      >
+                      <Link href="#" passHref>
                         <StyledName>{name}</StyledName>
                       </Link>
                       <StyledWeight>{weight}</StyledWeight>
@@ -88,8 +93,24 @@ const Cart: React.FC = () => {
                     </StyledCell>
 
                     <StyledCell>
-                      <Button inverted onClick={() => handleProductRemove(id)}>
+                      <Button
+                        inverted
+                        type="button"
+                        onClick={() => handleRemoveProduct(id)}
+                      >
                         Удалить
+                      </Button>
+                      <Button
+                        type="button"
+                        onClick={() => handleIncreaseProduct(id, priceDefault)}
+                      >
+                        +
+                      </Button>
+                      <Button
+                        type="button"
+                        onClick={() => handleDecreaseProduct(id, priceDefault)}
+                      >
+                        -
                       </Button>
                     </StyledCell>
                   </StyledRow>
