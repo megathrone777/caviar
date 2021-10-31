@@ -6,7 +6,7 @@
   },
   {
     "id": "2",
-    "href": "/products",
+    "href": "/shop",
     "text": "Магазин"
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "id": "6",
-    "href": "/contacts",
+    "href": "/delivery",
     "text": "Условия доставки"
   },
   {

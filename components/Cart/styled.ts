@@ -1,7 +1,7 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.div`
-  background: url('/images/main_bg.png');
+  background: url("/images/main_bg.png");
   padding-bottom: ${({ theme }) => theme.rem(25)};
   padding-top: ${({ theme }) => theme.rem(25)};
 `;

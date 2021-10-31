@@ -11,7 +11,7 @@ export const StyledWrapper = styled.div`
 
 export const StyledTitle = styled.h1`
   color: white;
-  font: ${({ theme }) => `${theme.rem(56)} ${theme.fonts.fontBlack}`};
+  font: ${({ theme }) => `${theme.rem(48)} ${theme.fonts.fontBlack}`};
   letter-spacing: ${({ theme }) => theme.rem(2)};
   text-transform: uppercase;
 `;

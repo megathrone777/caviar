@@ -1,5 +1,5 @@
-query CartPageQuery {
-  products(locale: "all", where: { isRecommended: true }) {
+query ShopPageQuery($where: JSON) {
+  products(locale: "all", where: $where) {
     description
     id
     imageSmall {

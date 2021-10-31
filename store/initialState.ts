@@ -1,6 +1,6 @@
 import { get as getFromLocalStorage } from "local-storage";
 
-import { TProduct } from "~/components";
+import { TCartProduct } from "~/components";
 
 interface TShopSettings {
   shopIsClosed: boolean;
@@ -8,7 +8,7 @@ interface TShopSettings {
 
 export interface TState {
   cart: {
-    products: TProduct[];
+    products: TCartProduct[];
   };
   shopSettings: TShopSettings;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { TProduct } from "~/components";
+import { TCartProduct, TProduct } from "~/components";
 import {
   useStore,
   removeFromCart,
@@ -65,7 +65,7 @@ const Cart: React.FC = () => {
                   totalPrice,
                   priceDefault,
                   weight,
-                }: TProduct): React.ReactElement => (
+                }: TCartProduct): React.ReactElement => (
                   <StyledRow key={`${id}-${name}`}>
                     <StyledCell>
                       <StyledImageWrapper>

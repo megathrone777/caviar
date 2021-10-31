@@ -9,6 +9,7 @@ query HomePageQuery {
     name
     priceDefault
     priceDiscounted
+    slug
     quantity
     weight
   }

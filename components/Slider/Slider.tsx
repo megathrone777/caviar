@@ -47,18 +47,18 @@ const Slider: React.FC<TProps> = ({ slides }) => {
     <StyledWrapper>
       <SlickSlider {...settings}>
         {slides.map(
-          ({ image, title }: TSlide): React.ReactElement => (
-            <>
-              <StyledLayout>
+          ({ image, title }: TSlide, index: number): React.ReactElement => (
+            <React.Fragment key={`slide-${index}`}>
+              <StyledLayout alignRight={index === 1}>
                 <Container>
                   <StyledTitle dangerouslySetInnerHTML={{ __html: title }} />
-                  <Button inverted type="button">
+                  <Button href="/shop" inverted={index !== 1}>
                     Перейти в магазин
                   </Button>
                 </Container>
               </StyledLayout>
               <img alt="Slide" src={image.url} />
-            </>
+            </React.Fragment>
           )
         )}
       </SlickSlider>

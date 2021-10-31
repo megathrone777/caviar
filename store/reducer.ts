@@ -1,7 +1,7 @@
 import React from "react";
 import { set as setToLocalStorage } from "local-storage";
 
-import { TProduct } from "~/components";
+import { TCartProduct } from "~/components";
 import { TAction, TActionTypes } from "./actions";
 import { TState } from "./initialState";
 
@@ -15,7 +15,7 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
   const actions = {
     [TActionTypes.REMOVE_PRODUCT]: (): TState => {
       const products = [...state.cart.products].filter(
-        (product: TProduct) => product.id !== payload
+        (product: TCartProduct) => product.id !== payload
       );
 
       return setStateToLocalStorage({
@@ -31,7 +31,7 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       const products = [...state.cart.products];
 
       const foundIndex = products.findIndex(
-        (product: TProduct) => product.id === payload.id
+        (product: TCartProduct) => product.id === payload.id
       );
       products[foundIndex].quantity++;
       products[foundIndex].totalPrice += parseInt(payload.priceDefault);
@@ -49,11 +49,11 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       const products = [...state.cart.products];
 
       const foundIndex = products.findIndex(
-        (product: TProduct) => product.id === payload.id
+        (product: TCartProduct) => product.id === payload.id
       );
 
       if (products[foundIndex].quantity === 1) {
-        products.filter((product: TProduct) => product.id !== payload.id);
+        products.filter((product: TCartProduct) => product.id !== payload.id);
       } else {
         products[foundIndex].quantity--;
         products[foundIndex].totalPrice -= parseInt(payload.priceDefault);
@@ -68,9 +68,10 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
     },
 
     [TActionTypes.ADD_TO_CART]: (): TState => {
+      console.log(payload);
       const products = [...state.cart.products];
       const foundIndex = products.findIndex(
-        (product: TProduct) => product.id === payload.id
+        (product: TCartProduct) => product.id === payload.id
       );
 
       if (products[foundIndex]) {
