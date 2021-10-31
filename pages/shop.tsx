@@ -3,17 +3,18 @@ import { NextPage, NextPageContext } from "next";
 import { gql } from "@apollo/client";
 
 import client from "~/apollo-client";
-import { Banner, Layout, Media, Shop, TProduct } from "~/components";
+import { Banner, Layout, Media, Shop, TProduct, TCategory } from "~/components";
 import ShopPageQuery from "~/queries/shoppage.gql";
-
+import CategoriesQuery from "~/queries/categories.gql";
 interface TProps {
+  categories: TCategory[];
   products: TProduct[];
 }
 
-const ShopPage: NextPage<TProps> = ({ products }) => (
+const ShopPage: NextPage<TProps> = ({ products, categories }) => (
   <Layout title="Caviar Express | Магазин">
     <Banner title="Магазин" />
-    <Shop categories={[]} products={products} />
+    <Shop categories={categories} products={products} />
     <Media />
   </Layout>
 );
@@ -35,8 +36,17 @@ ShopPage.getInitialProps = async (context: NextPageContext) => {
     },
   });
 
+  const {
+    data: { categories },
+  } = await client.query({
+    query: gql`
+      ${CategoriesQuery}
+    `,
+  });
+
   return {
     products,
+    categories,
   };
 };
 

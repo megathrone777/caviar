@@ -1,19 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import { useNotifications } from "reapop";
-import { useRouter } from "next/router";
 
 import { addToCart, useStore } from "~/store";
-import { TCategory } from "./types";
-import { TProduct, TCartProduct } from "~/components";
+import { TCategory } from "../Categories/types";
+import { TProduct, TCartProduct, Categories } from "~/components";
 import { Button, Container } from "~/theme/components";
 import {
   StyledWrapper,
   StyledLayout,
-  StyledCategories,
-  StyledCategoriesItem,
-  StyledCategoriesList,
-  StyledCategoriesLink,
   StyledProducts,
   StyledProductsButtons,
   StyledProductsImage,
@@ -34,9 +29,8 @@ interface TProps {
   products: TProduct[];
 }
 
-const Shop: React.FC<TProps> = ({ categories, products }) => {
+const Shop: React.FC<TProps> = ({ products, categories }) => {
   const { dispatch } = useStore();
-  const router = useRouter();
   const { notify } = useNotifications();
 
   const handleProductAdd = (product: TCartProduct): void => {
@@ -52,94 +46,11 @@ const Shop: React.FC<TProps> = ({ categories, products }) => {
     });
   };
 
-  const handleCategoryToggle = (
-    event: React.SyntheticEvent<HTMLAnchorElement>,
-    slug: string
-  ): void => {
-    event.preventDefault();
-
-    if (slug) {
-      router.push(
-        {
-          pathname: router.pathname,
-          query: { slug },
-        },
-        undefined,
-        {
-          scroll: false,
-        }
-      );
-      return;
-    }
-
-    router.push(
-      {
-        pathname: router.pathname,
-        query: {},
-      },
-      undefined,
-      {
-        scroll: false,
-      }
-    );
-  };
-
   return (
     <StyledWrapper>
       <Container>
         <StyledLayout>
-          <StyledCategories>
-            <StyledCategoriesList>
-              <StyledCategoriesItem>
-                <StyledCategoriesLink
-                  href="#"
-                  isActive={router.query.slug === undefined}
-                  onClick={(event: React.SyntheticEvent<HTMLAnchorElement>) =>
-                    handleCategoryToggle(event, null)
-                  }
-                >
-                  Все
-                </StyledCategoriesLink>
-              </StyledCategoriesItem>
-
-              <StyledCategoriesItem>
-                <StyledCategoriesLink
-                  href="#"
-                  isActive={router.query.slug === "rybnye-delikatesy"}
-                  onClick={(event: React.SyntheticEvent<HTMLAnchorElement>) =>
-                    handleCategoryToggle(event, "rybnye-delikatesy")
-                  }
-                >
-                  Рыбные деликатесы
-                </StyledCategoriesLink>
-              </StyledCategoriesItem>
-
-              <StyledCategoriesItem>
-                <StyledCategoriesLink
-                  href="#"
-                  isActive={router.query.slug === "chernaya-ikra-osetrovaya"}
-                  onClick={(event: React.SyntheticEvent<HTMLAnchorElement>) =>
-                    handleCategoryToggle(event, "chernaya-ikra-osetrovaya")
-                  }
-                >
-                  Чёрная икра
-                </StyledCategoriesLink>
-              </StyledCategoriesItem>
-
-              <StyledCategoriesItem>
-                <StyledCategoriesLink
-                  href="#"
-                  isActive={router.query.slug === "krasnaya-ikra-lososevaya"}
-                  onClick={(event: React.SyntheticEvent<HTMLAnchorElement>) =>
-                    handleCategoryToggle(event, "krasnaya-ikra-lososevaya")
-                  }
-                >
-                  Красная икра
-                </StyledCategoriesLink>
-              </StyledCategoriesItem>
-            </StyledCategoriesList>
-          </StyledCategories>
-
+          <Categories categories={categories} />
           <StyledProducts>
             {products && !!products.length ? (
               <StyledProductsList>
