@@ -54,3 +54,30 @@ export const StyledTotalPrice = styled.p`
 export const StyledTotalPriceAmount = styled.span`
   color: ${({ theme }) => theme.colors.orange};
 `;
+
+export const StyledQuantity = styled.span`
+  display: inline-block;
+  font: ${({ theme }) => `${theme.rem(18)} ${theme.fonts.fontBold}`};
+  margin: 0 ${({ theme }) => theme.rem(15)};
+`;
+
+export const StyledQuantityWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
+export const StyledQuantityButton = styled.button`
+  background-color: ${({ theme }) => theme.colors.orange};
+  border: none;
+  color: white;
+  cursor: pointer;
+  font: ${({ theme }) => `${theme.rem(18)} ${theme.fonts.fontBold}`};
+  height: ${({ theme }) => theme.rem(45)};
+  transition: background-color 0.2s ease-in;
+  width: ${({ theme }) => theme.rem(45)};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.black};
+  }
+`;

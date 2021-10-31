@@ -33,8 +33,9 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       const foundIndex = products.findIndex(
         (product: TCartProduct) => product.id === payload.id
       );
-      products[foundIndex].quantity++;
-      products[foundIndex].totalPrice += parseInt(payload.priceDefault);
+      products[foundIndex].quantity = products[foundIndex].quantity + 1;
+      products[foundIndex].totalPrice =
+        products[foundIndex].totalPrice + products[foundIndex].priceDefault;
 
       return setStateToLocalStorage({
         ...state,
@@ -51,13 +52,10 @@ const reducer: React.Reducer<TState, TAction> = (state, { payload, type }) => {
       const foundIndex = products.findIndex(
         (product: TCartProduct) => product.id === payload.id
       );
+      products[foundIndex].quantity = products[foundIndex].quantity - 1;
+      products[foundIndex].totalPrice =
+        products[foundIndex].totalPrice - products[foundIndex].priceDefault;
 
-      if (products[foundIndex].quantity === 1) {
-        products.filter((product: TCartProduct) => product.id !== payload.id);
-      } else {
-        products[foundIndex].quantity--;
-        products[foundIndex].totalPrice -= parseInt(payload.priceDefault);
-      }
       return setStateToLocalStorage({
         ...state,
         cart: {

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { TCartProduct, TProduct } from "~/components";
+import { TCartProduct } from "~/components";
 import {
   useStore,
   removeFromCart,
@@ -21,6 +21,9 @@ import {
   StyledTotalPrice,
   StyledTotalPriceAmount,
   StyledWeight,
+  StyledQuantity,
+  StyledQuantityButton,
+  StyledQuantityWrapper,
 } from "./styled";
 
 const Cart: React.FC = () => {
@@ -30,7 +33,7 @@ const Cart: React.FC = () => {
   } = state;
 
   const addedProductsPrice: number[] = products.map(
-    ({ totalPrice }: TProduct): number => totalPrice
+    ({ totalPrice }: TCartProduct): number => totalPrice
   );
 
   const totalProductsPrice = addedProductsPrice.reduce(
@@ -42,12 +45,13 @@ const Cart: React.FC = () => {
     dispatch(removeFromCart(id));
   };
 
-  const handleIncreaseProduct = (id: string, priceDefault: number): void => {
-    dispatch(increaseQuantity(id, priceDefault));
+  const handleIncreaseProduct = (id: string): void => {
+    dispatch(increaseQuantity(id));
   };
 
-  const handleDecreaseProduct = (id: string, priceDefault: number): void => {
-    dispatch(decreaseQuantity(id, priceDefault));
+  const handleDecreaseProduct = (id: string, quantity: number): void => {
+    if (quantity === 1) return;
+    dispatch(decreaseQuantity(id));
   };
 
   return (
@@ -63,7 +67,6 @@ const Cart: React.FC = () => {
                   name,
                   quantity,
                   totalPrice,
-                  priceDefault,
                   weight,
                 }: TCartProduct): React.ReactElement => (
                   <StyledRow key={`${id}-${name}`}>
@@ -89,7 +92,22 @@ const Cart: React.FC = () => {
                     </StyledCell>
 
                     <StyledCell>
-                      <span>{quantity}</span>
+                      <StyledQuantityWrapper>
+                        <StyledQuantityButton
+                          type="button"
+                          onClick={() => handleDecreaseProduct(id, quantity)}
+                        >
+                          -
+                        </StyledQuantityButton>
+                        <StyledQuantity>{quantity}</StyledQuantity>
+
+                        <StyledQuantityButton
+                          type="button"
+                          onClick={() => handleIncreaseProduct(id)}
+                        >
+                          +
+                        </StyledQuantityButton>
+                      </StyledQuantityWrapper>
                     </StyledCell>
 
                     <StyledCell>
@@ -99,18 +117,6 @@ const Cart: React.FC = () => {
                         onClick={() => handleRemoveProduct(id)}
                       >
                         Удалить
-                      </Button>
-                      <Button
-                        type="button"
-                        onClick={() => handleIncreaseProduct(id, priceDefault)}
-                      >
-                        +
-                      </Button>
-                      <Button
-                        type="button"
-                        onClick={() => handleDecreaseProduct(id, priceDefault)}
-                      >
-                        -
                       </Button>
                     </StyledCell>
                   </StyledRow>

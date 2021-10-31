@@ -22,24 +22,16 @@ export const removeFromCart = (id: string): TAction => ({
   type: TActionTypes.REMOVE_PRODUCT,
 });
 
-export const increaseQuantity = (
-  id: string,
-  priceDefault: number
-): TAction => ({
+export const increaseQuantity = (id: string): TAction => ({
   payload: {
     id,
-    priceDefault,
   },
   type: TActionTypes.INCREASE_QUANTITY,
 });
 
-export const decreaseQuantity = (
-  id: string,
-  priceDefault: number
-): TAction => ({
+export const decreaseQuantity = (id: string): TAction => ({
   payload: {
     id,
-    priceDefault,
   },
   type: TActionTypes.DECREASE_QUANTITY,
 });

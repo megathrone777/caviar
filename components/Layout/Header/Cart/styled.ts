@@ -25,7 +25,7 @@ export const StyledLink = styled.a<{ isFixed: boolean }>`
   align-items: center;
   display: inline-flex;
   padding: ${({ isFixed, theme }) =>
-    isFixed ? `${theme.rem(13)} ${theme.rem(10)} ${theme.rem(8)}` : 0};
+    isFixed ? `${theme.rem(13)} ${theme.rem(13)} ${theme.rem(8)}` : 0};
   justify-content: flex-end;
   text-decoration: none;
 
