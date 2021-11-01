@@ -72,7 +72,7 @@ export const Categories: React.FC<TProps> = ({ categories }) => {
                 href="#"
                 isActive={router.query.slug === slug}
                 onClick={(event: React.SyntheticEvent<HTMLAnchorElement>) =>
-                  handleCategoryToggle(event, null)
+                  handleCategoryToggle(event, slug)
                 }
               >
                 {name}
