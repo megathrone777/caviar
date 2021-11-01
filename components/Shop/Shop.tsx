@@ -3,8 +3,7 @@ import Link from "next/link";
 import { useNotifications } from "reapop";
 
 import { addToCart, useStore } from "~/store";
-import { TCategory } from "../Categories/types";
-import { TProduct, TCartProduct, Categories } from "~/components";
+import { TProduct, TCartProduct, Categories, TCategory } from "~/components";
 import { Button, Container } from "~/theme/components";
 import {
   StyledWrapper,

@@ -65,19 +65,21 @@ export const Categories: React.FC<TProps> = ({ categories }) => {
             Все
           </StyledCategoriesLink>
         </StyledCategoriesItem>
-        {categories.map(({ name, slug }) => (
-          <StyledCategoriesItem>
-            <StyledCategoriesLink
-              href="#"
-              isActive={router.query.slug === slug}
-              onClick={(event: React.SyntheticEvent<HTMLAnchorElement>) =>
-                handleCategoryToggle(event, null)
-              }
-            >
-              {name}
-            </StyledCategoriesLink>
-          </StyledCategoriesItem>
-        ))}
+        {categories.map(
+          ({ name, slug }: TCategory, index: number): React.ReactElement => (
+            <StyledCategoriesItem key={`${name}-${index}`}>
+              <StyledCategoriesLink
+                href="#"
+                isActive={router.query.slug === slug}
+                onClick={(event: React.SyntheticEvent<HTMLAnchorElement>) =>
+                  handleCategoryToggle(event, null)
+                }
+              >
+                {name}
+              </StyledCategoriesLink>
+            </StyledCategoriesItem>
+          )
+        )}
       </StyledCategoriesList>
     </StyledCategories>
   );
