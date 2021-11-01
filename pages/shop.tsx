@@ -9,12 +9,21 @@ import ShopPageQuery from "~/queries/shoppage.gql";
 interface TProps {
   categories: TCategory[];
   products: TProduct[];
+  productsLoading: boolean;
 }
 
-const ShopPage: NextPage<TProps> = ({ products, categories }) => (
+const ShopPage: NextPage<TProps> = ({
+  products,
+  productsLoading,
+  categories,
+}) => (
   <Layout title="Caviar Express | Магазин">
     <Banner title="Магазин" />
-    <Shop categories={categories} products={products} />
+    <Shop
+      categories={categories}
+      products={products}
+      productsLoading={productsLoading}
+    />
     <Media />
   </Layout>
 );
@@ -23,6 +32,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
   const { slug } = context.query;
   const {
     data: { products, categories },
+    loading: productsLoading,
   } = await client.query({
     query: gql`
       ${ShopPageQuery}
@@ -34,12 +44,14 @@ export const getServerSideProps = async (context: NextPageContext) => {
         },
       },
     },
+    notifyOnNetworkStatusChange: true,
   });
 
   return {
     props: {
       products,
       categories,
+      productsLoading,
     },
   };
 };

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useNotifications } from "reapop";
 
 import { addToCart, useStore } from "~/store";
 import { TProduct, TCartProduct, Categories, TCategory } from "~/components";
-import { Button, Container } from "~/theme/components";
+import { Button, Container, Loader } from "~/theme/components";
 import {
   StyledWrapper,
   StyledLayout,
@@ -26,9 +26,14 @@ import {
 interface TProps {
   categories: TCategory[];
   products: TProduct[];
+  productsLoading: boolean;
 }
 
-const Shop: React.FC<TProps> = ({ products, categories }) => {
+const Shop: React.FC<TProps> = ({
+  products,
+  productsLoading = true,
+  categories,
+}) => {
   const { dispatch } = useStore();
   const { notify } = useNotifications();
 
@@ -51,6 +56,7 @@ const Shop: React.FC<TProps> = ({ products, categories }) => {
         <StyledLayout>
           <Categories categories={categories} />
           <StyledProducts>
+            {productsLoading && <Loader />}
             {products && !!products.length ? (
               <StyledProductsList>
                 {products.map(

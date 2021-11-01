@@ -17,8 +17,6 @@ interface TProps {
 export const Categories: React.FC<TProps> = ({ categories }) => {
   const router = useRouter();
 
-  console.log(categories);
-
   const handleCategoryToggle = (
     event: React.SyntheticEvent<HTMLAnchorElement>,
     slug: string
