@@ -14,7 +14,7 @@ query ShopPageQuery($where: JSON) {
     weight
   }
 
-  categories(locale: "all") {
+  categories(locale: "all", sort: "slug") {
     name
     slug
   }
