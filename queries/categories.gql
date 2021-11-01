@@ -1,6 +1,0 @@
-query CategoriesQuery {
-  categories(locale: "all") {
-    name
-    slug
-  }
-}

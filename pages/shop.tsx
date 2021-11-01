@@ -5,7 +5,7 @@ import { gql } from "@apollo/client";
 import client from "~/apollo-client";
 import { Banner, Layout, Media, Shop, TProduct, TCategory } from "~/components";
 import ShopPageQuery from "~/queries/shoppage.gql";
-import CategoriesQuery from "~/queries/categories.gql";
+
 interface TProps {
   categories: TCategory[];
   products: TProduct[];
@@ -22,7 +22,7 @@ const ShopPage: NextPage<TProps> = ({ products, categories }) => (
 export const getServerSideProps = async (context: NextPageContext) => {
   const { slug } = context.query;
   const {
-    data: { products },
+    data: { products, categories },
   } = await client.query({
     query: gql`
       ${ShopPageQuery}
@@ -34,14 +34,6 @@ export const getServerSideProps = async (context: NextPageContext) => {
         },
       },
     },
-  });
-
-  const {
-    data: { categories },
-  } = await client.query({
-    query: gql`
-      ${CategoriesQuery}
-    `,
   });
 
   return {

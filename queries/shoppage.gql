@@ -13,4 +13,9 @@ query ShopPageQuery($where: JSON) {
     quantity
     weight
   }
+
+  categories(locale: "all") {
+    name
+    slug
+  }
 }
