@@ -18,7 +18,7 @@ const ProductPage: NextPage<TProps> = ({ product }) => (
   </Layout>
 );
 
-ProductPage.getInitialProps = async (context: NextPageContext) => {
+export const getServerSideProps = async (context: NextPageContext) => {
   const { slug } = context.query;
   const {
     data: { productBySlug: product },
@@ -32,7 +32,9 @@ ProductPage.getInitialProps = async (context: NextPageContext) => {
   });
 
   return {
-    product,
+    props: {
+      product,
+    },
   };
 };
 

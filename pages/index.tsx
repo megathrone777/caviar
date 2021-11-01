@@ -61,7 +61,7 @@ const IndexPage: NextPage<TProps> = ({ products, slides }) => (
   </Layout>
 );
 
-IndexPage.getInitialProps = async () => {
+export const getServerSideProps = async () => {
   const {
     data: { products, slides },
   } = await client.query({
@@ -71,8 +71,10 @@ IndexPage.getInitialProps = async () => {
   });
 
   return {
-    products,
-    slides,
+    props: {
+      products,
+      slides,
+    },
   };
 };
 

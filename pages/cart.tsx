@@ -19,7 +19,7 @@ const CartPage: NextPage<TProps> = ({ products }) => (
   </Layout>
 );
 
-CartPage.getInitialProps = async () => {
+export const getServerSideProps = async () => {
   const {
     data: { products },
   } = await client.query({
@@ -29,7 +29,9 @@ CartPage.getInitialProps = async () => {
   });
 
   return {
-    products,
+    props: {
+      products,
+    },
   };
 };
 
