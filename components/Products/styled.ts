@@ -58,7 +58,7 @@ export const StyledListItemImageHolder = styled.div`
 export const StyledListItemImage = styled.img`
   height: 100%;
   mix-blend-mode: darken;
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
 `;
 

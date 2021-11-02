@@ -5,7 +5,7 @@ import { Menu } from "./Menu";
 import { Cart } from "./Cart";
 import { Panel } from "./Panel";
 import { Container } from "~/theme/components";
-import { StyledWrapper, StyledLayout, StyledOptions } from "./styled";
+import { StyledWrapper, StyledLayout } from "./styled";
 
 const Header: React.FC = () => (
   <>

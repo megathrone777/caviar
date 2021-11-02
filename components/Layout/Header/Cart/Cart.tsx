@@ -22,7 +22,7 @@ const Cart: React.FC = () => {
     } else if (window.scrollY < 100) {
       toggleCartFixed(false);
     }
-  }, [cartIsFixed, toggleCartFixed]);
+  }, []);
 
   const addedProductsPrice: number[] = state.cart.products.map(
     ({ totalPrice }: TCartProduct): number => totalPrice
@@ -40,7 +40,7 @@ const Cart: React.FC = () => {
     return (): void => {
       window.removeEventListener("scroll", checkCartPosition);
     };
-  }, []);
+  }, [checkCartPosition]);
 
   return (
     <StyledWrapper isFixed={cartIsFixed}>

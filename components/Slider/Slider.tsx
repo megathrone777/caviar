@@ -1,5 +1,6 @@
 import React from "react";
 import SlickSlider, { CustomArrowProps, Settings } from "react-slick";
+import Image from "next/image";
 
 import { Button, Container } from "~/theme/components";
 import { SvgAngleIcon } from "~/icons";
@@ -57,7 +58,12 @@ const Slider: React.FC<TProps> = ({ slides }) => {
                   </Button>
                 </Container>
               </StyledLayout>
-              <img alt="Slide" src={image.url} />
+              <Image
+                alt="Slide"
+                layout="fill"
+                priority
+                src={image.url}
+              />
             </React.Fragment>
           )
         )}

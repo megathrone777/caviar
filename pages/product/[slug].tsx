@@ -18,8 +18,8 @@ const ProductPage: NextPage<TProps> = ({ product }) => (
   </Layout>
 );
 
-export const getServerSideProps = async (context: NextPageContext) => {
-  const { slug } = context.query;
+export const getServerSideProps = async ({ query }: NextPageContext) => {
+  const { slug } = query;
   const {
     data: { productBySlug: product },
   } = await client.query({
