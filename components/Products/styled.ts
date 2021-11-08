@@ -1,4 +1,5 @@
 import { styled } from "~/theme";
+import { includeBreakpoint } from "~/theme/mixins";
 
 export const StyledWrapper = styled.section`
   background: url("/images/main_bg.png");
@@ -11,16 +12,33 @@ export const StyledTitle = styled.h2`
   font: ${({ theme }) => `${theme.rem(32)} ${theme.fonts.fontBlack}`};
   margin-bottom: ${({ theme }) => theme.rem(15)};
   text-transform: uppercase;
+
+  ${includeBreakpoint.tablet`
+    font-size: ${({ theme }) => theme.rem(24)}
+  `}
+
+  ${includeBreakpoint.mobile`
+    font-size: ${({ theme }) => theme.rem(18)}
+  `}
 `;
 
 export const StyledTitleImage = styled.img`
   max-width: ${({ theme }) => theme.rem(80)};
   margin-right: ${({ theme }) => theme.rem(10)};
+
+  ${includeBreakpoint.mobile`
+    max-width: ${({ theme }) => theme.rem(60)};
+  `}
 `;
 
 export const StyledText = styled.p`
   font: ${({ theme }) => `${theme.rem(17)} ${theme.fonts.fontMedium}`};
   margin-bottom: ${({ theme }) => theme.rem(15)};
+
+  ${includeBreakpoint.mobile`
+    font-size: ${({ theme }) => theme.rem(16)};
+    text-align: justify;
+  `}
 `;
 
 export const StyledList = styled.div`
@@ -35,6 +53,14 @@ export const StyledListItem = styled.div`
   margin-bottom: ${({ theme }) => theme.rem(30)};
   margin-left: ${({ theme }) => theme.rem(15)};
   margin-right: ${({ theme }) => theme.rem(15)};
+
+  ${includeBreakpoint.tablet`
+   flex: 0 1 calc(33% - ${({ theme }) => theme.rem(30)});
+  `}
+
+  ${includeBreakpoint.mobile`
+   flex: 0 1 calc(50% - ${({ theme }) => theme.rem(30)});
+  `}
 `;
 
 export const StyledListItemLink = styled.a`

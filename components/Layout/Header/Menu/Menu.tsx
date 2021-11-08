@@ -12,11 +12,15 @@ interface TMenuItem {
   text: string;
 }
 
-const Menu: React.FC = () => {
+interface TProps {
+  isOpened: boolean;
+}
+
+const Menu: React.FC<TProps> = ({ isOpened }) => {
   const router = useRouter();
 
   return (
-    <StyledWrapper>
+    <StyledWrapper isOpened={isOpened}>
       {menuItems && !!menuItems.length && (
         <StyledList>
           {menuItems.map(

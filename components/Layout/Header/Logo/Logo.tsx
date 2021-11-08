@@ -3,12 +3,16 @@ import Link from "next/link";
 
 import { StyledWrapper, StyledLink, StyledImage, StyledText } from "./styled";
 
-const Logo: React.FC = () => (
+interface TProps {
+  menuIsOpened: boolean;
+}
+
+const Logo: React.FC<TProps> = ({ menuIsOpened }) => (
   <StyledWrapper>
     <Link href="/" passHref>
       <StyledLink>
         <StyledImage alt="Logo" src="/images/logo_img.png" />
-        <StyledText>Caviar Express</StyledText>
+        <StyledText menuIsOpened={menuIsOpened}>Caviar Express</StyledText>
       </StyledLink>
     </Link>
   </StyledWrapper>

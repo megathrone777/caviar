@@ -1,4 +1,5 @@
 import { styled } from "~/theme";
+import { includeBreakpoint } from '~/theme/mixins'
 
 export const StyledWrapper = styled.div`
   background: url("/images/main_bg.png");
@@ -16,11 +17,20 @@ export const StyledRow = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+
+  ${includeBreakpoint.mobile`
+    flex-wrap: wrap;
+  `};
 `;
 
 export const StyledCell = styled.div`
   flex: 0 1 16.66%;
   text-align: center;
+
+  ${includeBreakpoint.mobile`
+    flex: 0 1 100%;
+    margin-bottom: ${({ theme }) => theme.rem(20)};
+  `};
 `;
 
 export const StyledName = styled.a`

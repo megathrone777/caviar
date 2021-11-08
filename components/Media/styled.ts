@@ -1,8 +1,13 @@
 import { styled } from "~/theme";
+import { includeBreakpoint } from "~/theme/mixins";
 
 export const StyledWrapper = styled.section`
   height: ${({ theme }) => theme.rem(880)};
   position: relative;
+
+  ${includeBreakpoint.tablet`
+    height: ${({ theme }) => theme.rem(350)};
+  `}
 `;
 
 export const StyledImage = styled.img`
@@ -29,4 +34,9 @@ export const StyledTitle = styled.h2`
   margin-left: auto;
   margin-bottom: ${({ theme }) => theme.rem(20)};
   text-transform: uppercase;
+
+  ${includeBreakpoint.tablet`
+    font-size: ${({ theme }) => theme.rem(36)};
+    max-width: ${({ theme }) => theme.rem(450)};
+  `}
 `;

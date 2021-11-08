@@ -2,6 +2,7 @@ import { styled } from "~/theme";
 
 export const StyledWrapper = styled.footer`
   background-color: ${({ theme }) => theme.colors.black};
+  overflow: hidden; // TODO: remove
   padding: ${({ theme }) => theme.rem(25)} 0 0;
 `;
 

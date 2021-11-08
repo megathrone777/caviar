@@ -1,9 +1,20 @@
-import { styled } from "~/theme";
+import { css, styled } from "~/theme";
+import { includeBreakpoint } from "~/theme/mixins";
 
 export const StyledWrapper = styled.div`
   align-items: center;
   display: flex;
   flex: 0 1 25%;
+
+  ${includeBreakpoint.tablet`
+    flex: 0 1 ${({ theme }) => theme.rem(100)};
+    max-width: ${({ theme }) => theme.rem(100)};
+  `};
+
+  ${includeBreakpoint.mobile`
+    position: relative;
+    z-index: 2002;
+  `};
 
   &:focus {
     outline: none;
@@ -23,11 +34,16 @@ export const StyledImage = styled.img`
   margin-bottom: ${({ theme }) => theme.rem(4)};
 `;
 
-export const StyledText = styled.span`
+export const StyledText = styled.span<{ menuIsOpened: boolean }>`
   color: ${({ theme }) => theme.colors.blue};
   display: block;
   font: ${({ theme }) => `${theme.rem(15)} ${theme.fonts.fontBlack}`};
   text-transform: uppercase;
   white-space: nowrap;
-  
+
+  ${includeBreakpoint.mobile`
+    ${({ menuIsOpened }) => menuIsOpened && css`
+      color: white;
+    `}
+  `};
 `;

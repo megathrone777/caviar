@@ -1,1 +1,1 @@
-export { respondTo } from "./respondTo";
+export { includeBreakpoint } from "./includeBreakpoint";

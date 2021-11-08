@@ -4,7 +4,7 @@ import { breakpoints } from "../variables/breakpoints";
 type cssParams = Parameters<typeof css>;
 const keys = Object.keys(breakpoints) as Array<keyof typeof breakpoints>;
 
-export const respondTo = keys.reduce((accumulator, label) => {
+export const includeBreakpoint = keys.reduce((accumulator, label) => {
   accumulator[label] = (...args: cssParams) => css`
     @media (max-device-width: ${breakpoints[label]}) {
       ${css(...args)};

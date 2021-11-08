@@ -1,4 +1,5 @@
 import { styled } from "~/theme";
+import { includeBreakpoint } from "~/theme/mixins";
 
 export const StyledWrapper = styled.div`
   background: url("/images/main_bg.png");
@@ -24,6 +25,14 @@ export const StyledProductsItem = styled.div`
   margin-bottom: ${({ theme }) => theme.rem(30)};
   margin-left: ${({ theme }) => theme.rem(15)};
   margin-right: ${({ theme }) => theme.rem(15)};
+
+  ${includeBreakpoint.tablet`
+   flex: 0 1 calc(33% - ${({ theme }) => theme.rem(30)});
+  `}
+
+  ${includeBreakpoint.mobile`
+   flex: 0 1 calc(50% - ${({ theme }) => theme.rem(30)});
+  `}
 `;
 
 export const StyledProductsLink = styled.a`
@@ -47,7 +56,7 @@ export const StyledProductsImageHolder = styled.div`
 export const StyledProductsImage = styled.img`
   height: 100%;
   mix-blend-mode: darken;
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
 `;
 
